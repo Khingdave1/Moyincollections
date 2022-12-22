@@ -19,14 +19,14 @@ html {
 body {
   font-family: 'Mulish', sans-serif;
   position: relative;
-  color: $text-color1;
+  color: $black1;
   letter-spacing: 0.01em;
   overflow-x: hidden;
 }
 
 /* General starts */
 a {
-  color: $text-color1;
+  color: $black1;
 }
 button {
   border: none;
@@ -73,28 +73,28 @@ textarea {
 }
 .prim_btn {
   color: $white-color;
-  background-color: $primary100;
-  border: 2px solid $primary100;
+  background-color: $primary1;
+  border: 2px solid $primary1;
   &:hover {
     background-color: $white-color;
-    color: $primary100;
+    color: $primary1;
   }
 }
 .sec_btn {
   color: $white-color;
-  background-color: $secondary100;
-  border: 2px solid $secondary100;
+  background-color: $secondary1;
+  border: 2px solid $secondary1;
   &:hover {
     background-color: $white-color;
-    color: $secondary100;
+    color: $secondary1;
   }
 }
 .tert_btn {
-  color: $primary100;
+  color: $primary1;
   background-color: $white-color;
-  border: 2px solid $primary100;
+  border: 2px solid $primary1;
   &:hover {
-    background-color: $primary100;
+    background-color: $primary1;
     color: $white-color;
   }
 }

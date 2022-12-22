@@ -1,0 +1,37 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+
+.header-top {
+    background-color: $primary1;
+    color: $white-color;
+    background: linear-gradient(
+        143deg,
+        $primary2 50%,
+        $secondary2 calc(50% + 2px)
+        );
+    .container {
+        display: flex;
+        justify-content: space-between;
+        ul {
+            display: flex;
+            align-items: center;
+            gap: $s-3;
+            height: $s-4;
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            &.header-top_connect {
+                li a .icon {
+                    margin-right: 0.2rem;
+                }
+            }
+        }
+    }
+}
+
+a {
+    color: $white-color;
+}

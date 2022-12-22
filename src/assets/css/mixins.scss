@@ -16,7 +16,7 @@
     border-radius: 50%;
   }
   
-  @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $text-color1) {
+  @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $black1) {
     width: 100%;
     border: 1px solid $bor-col;
     border-radius: $border-radius2;

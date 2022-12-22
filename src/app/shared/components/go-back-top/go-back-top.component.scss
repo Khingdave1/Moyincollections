@@ -7,9 +7,9 @@
   bottom: 6rem;
   right: 1rem;
   z-index: 100;
-  background-color: $primary100;
+  background-color: $primary1;
   box-shadow: $box-shadow1;
-  @include icon-area(44px, $primary80);
+  @include icon-area(44px, $primary2);
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;

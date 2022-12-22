@@ -11,13 +11,13 @@
     justify-content: center;
     color: $white-color;
     border: 1px solid transparent;
-    @include icon-area(54px, $success100);
+    @include icon-area(54px, $success1);
     transition: all .2s ease-in;
     
     &:hover {
         background: $white-color;
-        border: 1px solid $success100;
-        color: $success100;
+        border: 1px solid $success1;
+        color: $success1;
     }
     .icon {
         font-size: 34px;
