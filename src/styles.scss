@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+// Font //
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
+
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Mulish', sans-serif;
+  position: relative;
+  color: $text-color1;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+/* General starts */
+a {
+  color: $text-color1;
+}
+button {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+input,
+button,
+textarea,
+select {
+  font-family: 'Mulish', sans-serif;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+  &[readonly] {
+    background: $grey2 !important;
+  }
+}
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Mulish', sans-serif;
+}
+textarea {
+  resize: none;
+}
+
+/* Buttons Starts */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  outline: none;
+  border-radius: $border-radius2;
+  transition: all 0.4s;
+  z-index: 1;
+}
+.prim_btn {
+  color: $white-color;
+  background-color: $primary100;
+  border: 2px solid $primary100;
+  &:hover {
+    background-color: $white-color;
+    color: $primary100;
+  }
+}
+.sec_btn {
+  color: $white-color;
+  background-color: $secondary100;
+  border: 2px solid $secondary100;
+  &:hover {
+    background-color: $white-color;
+    color: $secondary100;
+  }
+}
+.tert_btn {
+  color: $primary100;
+  background-color: $white-color;
+  border: 2px solid $primary100;
+  &:hover {
+    background-color: $primary100;
+    color: $white-color;
+  }
+}
+
+/* Buttons ends */
+
+// .bg-success-color {
+//   background: $success100;
+// }
+// .bg-danger-color {
+//   background: $error100;
+// }
+// .bg-warning-color {
+//   background: $warning100;
+// }
+// .text-success {
+//   color: $success100;
+// }
+// .text-danger {
+//   color: $error100;
+// }
+// .text-warning {
+//   color: $warning100;
+// }
+.dis-flex {
+  display: flex;
+  align-items: center;
+}
+.clickable {
+  cursor: pointer;
+}
+.uc {
+  text-transform: uppercase;
+}
+.hover-1 {
+  transition: all 0.2s;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Section starts */
+.container {
+  padding: 0 5%;
+  @media screen and (min-width: 1200px) {
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+}
+.sect {
+  margin: 5rem 0;
+  padding: 3% 0;
+  @media only screen and (max-width: 870px) {
+    margin: 3rem 0;
+  }
+}
+/* Section ends */

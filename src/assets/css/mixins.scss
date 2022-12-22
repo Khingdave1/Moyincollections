@@ -1,0 +1,67 @@
+@mixin card($value, $auto: auto-fill) {
+    display: grid;
+    grid-gap: $s-4;
+    @media only screen and (min-width: 450px) {
+      grid-template-columns: repeat($auto, minmax($value, 1fr));
+    }
+  }
+  
+  @mixin icon-area($size, $color: transparent) {
+    display: inline-grid;
+    place-items: center;
+    min-width: $size;
+    height: $size;
+    border: 1px solid $color;
+    background: $color;
+    border-radius: 50%;
+  }
+  
+  @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $text-color1) {
+    width: 100%;
+    border: 1px solid $bor-col;
+    border-radius: $border-radius2;
+    background: $bac-col;
+    transition: all .2s;
+    // &:hover {
+    //   border: 1px solid $blue;
+    // }
+    input,
+    textarea {
+      width: 100%;
+      padding: $s-2;
+      border-radius: $border-radius2;
+      border: none;
+      background: none;
+      outline: none;
+      color: $inp-col;
+      &::placeholder {
+        color: $plac-col;
+      }
+    }
+    .icon {
+      font-size: 20px;
+      color: $grey1;
+      padding: $s-2;
+    }
+  }
+  
+  @mixin form-controls {
+    margin: $s-2 0;
+    display: grid;
+    grid-gap: $s-2;
+    label {
+      display: block;
+      margin-bottom: $s-1;
+    }
+    &_field {
+      .input-field {
+        @include input-field();
+        
+      }
+    }
+    &_btns {
+      .btn {
+        width: 100%;
+      }
+    }
+  }
