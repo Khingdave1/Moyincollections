@@ -6,10 +6,10 @@ import { DefaultComponent } from './default.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SharedModule } from '../shared/shared.module';
-import { HomeHeroComponent } from './components/home-hero/home-hero.component';
-import { HomeProductsComponent } from './components/home-products/home-products.component';
-import { HomeAboutComponent } from './components/home-about/home-about.component';
-import { HomeContactComponent } from './components/home-contact/home-contact.component';
+import { HomeHeroComponent } from './components/home/home-hero/home-hero.component';
+import { HomeAboutComponent } from './components/home/home-about/home-about.component';
+import { HomeContactComponent } from './components/home/home-contact/home-contact.component';
+import { HomeReviewsComponent } from './components/home/home-reviews/home-reviews.component';
 
 
 @NgModule({
@@ -18,9 +18,9 @@ import { HomeContactComponent } from './components/home-contact/home-contact.com
     HomeComponent,
     ProductsComponent,
     HomeHeroComponent,
-    HomeProductsComponent,
     HomeAboutComponent,
-    HomeContactComponent
+    HomeContactComponent,
+    HomeReviewsComponent
   ],
   imports: [
     CommonModule,
