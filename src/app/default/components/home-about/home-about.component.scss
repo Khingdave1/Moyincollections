@@ -1,0 +1,29 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+
+
+.mc_flex_content {
+    .mc_flex_details {
+      &_title {
+        position: relative;
+        display: inline-block;
+        &::after {
+            position: absolute;
+            content: '';
+            left: 50%;
+            top: 15%;
+            width: 40px;
+            height: 40px;
+            background: #32338536;
+            border-radius: 50%;
+        }
+      }
+    }
+    .mc_flex_img {
+        display: flex;
+        justify-content: center;
+        img {
+          height: 400px;
+        }
+      }
+  }

@@ -1,0 +1,23 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+
+.hero {
+    background-image: url('../../../../assets/img/js_home_banner.jpg1_e7300144-aab1-4e92-bbc8-2e602ad56f8f_1400x.webp');
+    background-position: center;
+    // background-size: cover;
+    width: 100%;
+    height: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white-color;
+    &_header {
+        text-align: center;
+        .title {
+            margin: $s-4 0;
+            span {
+                // color: $secondary1;
+            }
+        }
+    }
+}
