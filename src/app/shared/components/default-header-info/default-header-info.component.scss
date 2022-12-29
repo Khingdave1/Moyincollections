@@ -24,6 +24,11 @@
                 }
             }
             &.header-top_connect {
+                .email-big {
+                    @media only screen and (max-width: 670px) {
+                        display: none;
+                    }
+                } 
                 li a .icon {
                     margin-right: 0.2rem;
                 }

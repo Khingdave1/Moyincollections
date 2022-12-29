@@ -1,21 +1,30 @@
 <div class="header-bottom">
     <div class="container dis-flex">
         <div class="logo" routerLink="/">
-            <img src="../../../../assets/img/moheen-logo.svg" alt="">
+            <!-- <img src="../../../../assets/img/MOYIN/50-1.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/50-2.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/50.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/75-1.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/75-2.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/75.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/80-1.svg" alt="">
+            <img src="../../../../assets/img/MOYIN/80-2.svg" alt=""> -->
+            <img src="../../../../assets/img/moheen-logo-80.svg" alt="">
         </div>
-        <nav>
-            <ul class="nav-list dis-flex">
-                <li class="nav-list_item" routerLink="/">
+        <nav [class.show]="isHamClick">
+            <ul class="nav-list dis-flex"  #menuArea>
+                <li class="nav-list_item" routerLink="/" (click)="isHamClick = false">
                     Home
                 </li>
-                <li class="nav-list_item" >
+                <li class="nav-list_item" (click)="isHamClick = false">
                     About
                 </li>
-                <li class="nav-list_item" routerLink="/products">
+                <li class="nav-list_item" routerLink="/products" (click)="isHamClick = false">
                     Products
                 </li>
-                <li class="nav-list_item">
-                    Contact
+                <li class="nav-list_item" (click)="isHamClick = false">
+                    <a href="#contact">Contact</a>
+                    
                 </li>
             </ul>
         </nav>
@@ -25,6 +34,10 @@
                 <li title="Cart" class="cart">
                     <i class='bx bx-shopping-bag'></i>
                     <span class="counter">0</span>
+                </li>
+                <li class="hamburger" (click)="toggleMenu()" #menuBtn>
+                    <i class='bx bx-menu icon' *ngIf="isHamClick === false"></i>
+                    <i class='bx bx-x icon' *ngIf="isHamClick === true"></i>
                 </li>
             </ul>
         </div>

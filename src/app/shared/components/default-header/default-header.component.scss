@@ -7,24 +7,59 @@
     width: 100%;
     background-color: $white-color;
     border-bottom: 1px solid $grey2;
-    // padding: 0 2rem;
+    padding: 1rem 0;
     font-size: 15px;
+
+    // position: fixed;
+    // width: 100%;
+    // z-index: 150;
     .container {
         justify-content: space-between;
     }
     .logo {
+        width: 120px;
+        height: auto;
+        @media only screen and (max-width: 670px) {
+            width: 100px;
+        }
         img {
-            width: 150px;
-            height: auto;
+            width: 100%;
         }
     }
-    .nav-list {
-        gap: $s-2;
-        &_item {
-            cursor: pointer;
-            transition: all .2s ease;
-            &:hover {
-                color: $secondary1;
+    nav {
+        .nav-list {
+            gap: $s-2;
+            &_item {
+                cursor: pointer;
+                transition: all .2s ease;
+                font-size: 18px;
+                font-weight: 500;
+                &:hover {
+                    color: $secondary1;
+                }
+            }
+        }
+        @media only screen and (max-width: 670px) {
+            position: fixed;
+            top: 7rem;
+            right: -100%;
+            width: 60%;
+            height: 100%;
+            padding: 2rem;
+            background-color: $black3;
+            color: $white-color;
+            transition: all .2s ease-in;
+            z-index: 150;
+            &.show {
+                right: 0;
+            }
+            .nav-list {
+                display: grid;
+                grid-gap: $s-2;
+                a {
+                    color: $white-color;
+                }
+
             }
         }
     }
@@ -33,9 +68,11 @@
             gap: $s-2;
             li {
                 cursor: pointer;
-                @include icon-area(44px);
-                border: 1px solid $grey1;
-                transition: all .2s ease;
+                &:not(:last-child) {
+                    @include icon-area(44px);
+                    border: 1px solid $grey1;
+                    transition: all .2s ease;
+                }
                 &:hover {
                     color: $secondary1;
                 }
@@ -50,6 +87,11 @@
                         right: -5px;
                         @include icon-area(20px, $grey2);
                         color: $white-color;
+                    }
+                }
+                &.hamburger {
+                    .icon {
+                        font-size: 26px;
                     }
                 }
             }
