@@ -13,6 +13,8 @@ import { HomeReviewsComponent } from './components/home/home-reviews/home-review
 import { HomeProductsComponent } from './components/home/home-products/home-products.component';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ClickedOutsideDirective } from '../shared/directives/clicked-outside.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,12 +28,15 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     HomeReviewsComponent,
     HomeProductsComponent,
     DisplayProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ClickedOutsideDirective
   ],
   imports: [
     CommonModule,
     DefaultRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DefaultModule { }

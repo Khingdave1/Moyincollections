@@ -1,0 +1,84 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    gap: $s-2;
+    max-width: 900px;
+    @media only screen and (max-width: 700px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    &_img {
+        width: 100%;
+        flex-basis: 45%;
+        img {
+            width: 100%;
+        }
+    }
+    &_content {
+        flex-basis: 45%;
+        width: 100%;
+        &_categ {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $s-1;
+            &_item {
+                background-color: $divider-color1;
+                padding: 0.5rem;
+                display: inline-block;
+            }
+        }
+        &_title {
+            margin: $s-2 0;
+        }
+        &_quan-area {
+            margin: $s-2 0 $s-4;
+            padding-top: $s-2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: $s-2;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: $secondary1;
+                background: linear-gradient(90deg, $secondary2 0, $primary2 20%,$secondary2 0, $primary2);
+            }
+            .select-quan {
+                &_field {
+                    justify-content: center;
+                    gap: 0.3rem;
+                    // padding: 0.5rem;
+                    border: 2px solid $divider-color2;
+                    margin-top: 0.2rem;
+                    padding: 0 .2rem;
+                    font-size: 20px;
+                    input {
+                        width: 50px;
+                        border: none;
+                        outline: none;
+                        text-align: center;
+                        padding: .2rem 0;
+                    }
+                    .icon {
+                        cursor: pointer;
+                    }
+
+                }
+            }
+        }
+        &_btn {
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}

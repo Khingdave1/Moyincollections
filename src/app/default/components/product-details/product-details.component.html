@@ -1,1 +1,33 @@
-<p>product-details works!</p>
+<div class="product-details">
+    <div class="product-details_img">
+        <img [src]="currentProduct?.image" alt="image">
+        <!-- <img src="../../../../assets/img/wall-deco.jpg" alt=""> -->
+    </div>
+    <div class="product-details_content">
+        <div class="product-details_content_categ">
+            <small class="product-details_content_categ_item">Curtain</small>
+            <small class="product-details_content_categ_item">Rug</small>
+            <small class="product-details_content_categ_item">Towel</small>
+        </div>
+        <h3 class="product-details_content_title">{{currentProduct?.name}}</h3>
+        <!-- <h3 class="product-details_content_title">currentProduct.name</h3> -->
+        <p>{{currentProduct?.description}}</p>
+        <!-- <p>currentProduct.description</p> -->
+        <div class="product-details_content_quan-area">
+            <div class="select-quan">
+                <label for="quantity">Quantity</label>
+                <div class="select-quan_field dis-flex">
+                    <i class='bx bx-minus icon' (click)="decrement()"></i>
+                    <input type="text" id="quantity" [(ngModel)]="quanTotal" (input)="inputQuanValue()">
+                    <i class='bx bx-plus icon' (click)="increment()"></i>
+                </div>
+            </div>
+            <h4 class="total-price">N{{totalPrice | number}}</h4>
+        </div>
+        <div class="product-details_content_btn">
+            <button class="btn sec_btn">Add to Cart</button>
+        </div>
+
+
+    </div>
+</div>

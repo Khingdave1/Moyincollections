@@ -1,16 +1,30 @@
 <div class="products_list">
     <div class="products_list_item" *ngFor="let product of products">
-        <img [src]="product.image" alt="image" class="products_list_item_img" >
+        <a [href]="product.image">
+            <img [src]="product.image" alt="image" class="products_list_item_img" >
+        </a>
         <h3 class="products_list_item_title uc">{{product.name}}</h3>
         
         <div class="dis-flex products_list_item_bottom">
             <p>N{{product.price | number}}</p>
 
-            <span class="products_list_item_bottom_icon">
+            <span class="products_list_item_bottom_icon" (click)="showProductDetails(product)">
                 <i class='bx bx-plus'></i>
             </span>
         </div>
         <!-- <div class="products_list_item_content">
         </div> -->
+    </div>
+</div>
+
+
+<div class="modal" *ngIf="isModal">
+    <div class="modal_area" [class.show]="isModal">
+        <!-- appClickedOutside (clickedOutside)="hanldeChange()" -->
+        <app-product-details [currentProduct]="currentProduct"></app-product-details>
+
+        <span class="modal_area_close clickable" (click)="isModal = false">
+            <i class='bx bx-x icon'></i>
+        </span>
     </div>
 </div>

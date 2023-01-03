@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DefaultHeaderInfoComponent } from './components/default-header-info/default-header-info.component';
 import { GoBackTopComponent } from './components/go-back-top/go-back-top.component';
 import { WhatsappChatComponent } from './components/whatsapp-chat/whatsapp-chat.component';
+import { ClickedOutsideDirective } from './directives/clicked-outside.directive';
 
 
 
@@ -16,7 +17,8 @@ import { WhatsappChatComponent } from './components/whatsapp-chat/whatsapp-chat.
     DefaultFooterComponent,
     DefaultHeaderInfoComponent,
     GoBackTopComponent,
-    WhatsappChatComponent
+    WhatsappChatComponent,
+    // ClickedOutsideDirective
   ],
   imports: [
     CommonModule,
