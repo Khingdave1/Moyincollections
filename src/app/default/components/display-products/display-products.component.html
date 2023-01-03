@@ -1,0 +1,16 @@
+<div class="products_list">
+    <div class="products_list_item" *ngFor="let product of products">
+        <img [src]="product.image" alt="image" class="products_list_item_img" >
+        <h3 class="products_list_item_title uc">{{product.name}}</h3>
+        
+        <div class="dis-flex products_list_item_bottom">
+            <p>N{{product.price | number}}</p>
+
+            <span class="products_list_item_bottom_icon">
+                <i class='bx bx-plus'></i>
+            </span>
+        </div>
+        <!-- <div class="products_list_item_content">
+        </div> -->
+    </div>
+</div>

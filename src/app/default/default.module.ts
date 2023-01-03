@@ -10,6 +10,9 @@ import { HomeHeroComponent } from './components/home/home-hero/home-hero.compone
 import { HomeAboutComponent } from './components/home/home-about/home-about.component';
 import { HomeContactComponent } from './components/home/home-contact/home-contact.component';
 import { HomeReviewsComponent } from './components/home/home-reviews/home-reviews.component';
+import { HomeProductsComponent } from './components/home/home-products/home-products.component';
+import { DisplayProductsComponent } from './components/display-products/display-products.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { HomeReviewsComponent } from './components/home/home-reviews/home-review
     HomeHeroComponent,
     HomeAboutComponent,
     HomeContactComponent,
-    HomeReviewsComponent
+    HomeReviewsComponent,
+    HomeProductsComponent,
+    DisplayProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
