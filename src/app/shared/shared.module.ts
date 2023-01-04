@@ -8,6 +8,8 @@ import { DefaultHeaderInfoComponent } from './components/default-header-info/def
 import { GoBackTopComponent } from './components/go-back-top/go-back-top.component';
 import { WhatsappChatComponent } from './components/whatsapp-chat/whatsapp-chat.component';
 import { ClickedOutsideDirective } from './directives/clicked-outside.directive';
+import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
+import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
 
 
 
@@ -18,6 +20,8 @@ import { ClickedOutsideDirective } from './directives/clicked-outside.directive'
     DefaultHeaderInfoComponent,
     GoBackTopComponent,
     WhatsappChatComponent,
+    DashboardHeaderComponent,
+    DashboardSidenavComponent,
     // ClickedOutsideDirective
   ],
   imports: [
@@ -30,7 +34,9 @@ import { ClickedOutsideDirective } from './directives/clicked-outside.directive'
     DefaultFooterComponent,
     DefaultHeaderInfoComponent,
     GoBackTopComponent,
-    WhatsappChatComponent
+    WhatsappChatComponent,
+    DashboardHeaderComponent,
+    DashboardSidenavComponent,
   ]
 })
 export class SharedModule { }

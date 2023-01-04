@@ -15,12 +15,12 @@ const routes: Routes = [
         (m: any) => m.AuthModule
       ),
   },
-  // {
-  //   path: 'admin',
-  //   // canActivate: [AuthGuard],
-  //   loadChildren: () =>
-  //     import('./admin/admin.module').then((m: any) => m.AdminModule),
-  // },
+  {
+    path: 'admin',
+    // canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./admin/admin.module').then((m: any) => m.AdminModule),
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   {
     path: '**',
