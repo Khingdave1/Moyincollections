@@ -2,14 +2,49 @@
 @import 'mixins.scss';
 
 
-.auth_content {
-    &_header {
-        margin-bottom: $s-3;
+.auth {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--white-color);
+    display: flex;
+    overflow-y: auto;
+    &_content {
+        padding: $s-2;
+        border-radius: 4px;
+        margin: auto;
+        // width: 30%;
+        &_header {
+            margin-bottom: $s-3;
+            p {
+                margin-bottom: $s-1;
+                color: $grey2;
+                font-weight: 500;
+            }
+        }
+        .form {
+            @include form();
+        }
+        &_others {
+            margin-top: $s-3;
+        }
     }
-    .form {
-        @include form();
-    }
-    &_others {
-        margin-top: $s-3;
+}
+
+.vectors {
+    img {
+        position: absolute;
+        height: auto;
+        z-index: -10;
+        &:nth-child(1) {
+            top: -30px;
+            left: 0;
+            width: 200px;
+        }
+        &:nth-child(2) {
+            bottom: 0;
+            right: -90px;
+            width: 286px;
+            height: 200px;
+        }
     }
 }
