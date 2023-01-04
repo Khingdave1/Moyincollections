@@ -8,13 +8,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./default/default.module').then((m: any) => m.DefaultModule),
   },
-  // {
-  //   path: 'auth',
-  //   loadChildren: () =>
-  //     import('./authentication/authentication.module').then(
-  //       (m: any) => m.AuthenticationModule
-  //     ),
-  // },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then(
+        (m: any) => m.AuthModule
+      ),
+  },
   // {
   //   path: 'admin',
   //   // canActivate: [AuthGuard],

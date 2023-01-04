@@ -16,43 +16,64 @@
     border-radius: 50%;
   }
   
-  @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $black1) {
-    width: 100%;
-    border: 1px solid $bor-col;
-    border-radius: $border-radius2;
-    background: $bac-col;
-    transition: all .2s;
-    input,
-    textarea {
-      width: 100%;
-      padding: $s-2;
-      border-radius: $border-radius2;
-      border: none;
-      background: none;
-      outline: none;
-      color: $inp-col;
-      &::placeholder {
-        color: $plac-col;
-      }
-    }
-  }
-  
-  // @mixin form-controls {
-  //   margin: $s-2 0;
-  //   display: grid;
-  //   grid-gap: $s-2;
-  //   label {
-  //     display: block;
-  //     margin-bottom: $s-1;
-  //   }
-  //   &_field {
-  //     .input-field {
-  //       @include input-field(); 
-  //     }
-  //   }
-  //   &_btns {
-  //     .btn {
-  //       width: 100%;
+  // @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $black1) {
+  //   width: 100%;
+  //   border: 1px solid $bor-col;
+  //   border-radius: $border-radius2;
+  //   background: $bac-col;
+  //   transition: all .2s;
+  //   input,
+  //   textarea {
+  //     width: 100%;
+  //     padding: $s-2;
+  //     border-radius: $border-radius2;
+  //     border: none;
+  //     background: none;
+  //     outline: none;
+  //     color: $inp-col;
+  //     &::placeholder {
+  //       color: $plac-col;
   //     }
   //   }
   // }
+  
+  @mixin form {
+    display: grid;
+    grid-gap: $s-2;
+    &_control {
+        label {
+            display: inline-block;
+            margin-bottom: $s-1;
+        }
+        &_input {
+          background: $white-color;
+            border: 1px solid $grey3;
+            transition: all .2s ease-in;
+            width: 100%;
+            padding: 0 $s-2;
+            input ,
+            textarea{
+                width: 100%;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                padding: $s-2 0;
+                &::placeholder {
+                    color: $black1;
+                    font-size: 16px;
+                }
+            }
+            .icon {
+              font-size: 18px;
+            }
+            &:hover {
+                border: 1px solid $black1;
+            }
+        }
+    }
+    &_btn {
+        .btn {
+            width: 100%;
+        }
+    }
+  }

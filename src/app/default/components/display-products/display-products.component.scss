@@ -84,10 +84,10 @@
         }
         &_close {
             position: absolute;
-            top: $s-2;
-            right: $s-3;
+            top: .1rem;
+            right: -.1rem;
             .icon {
-                font-size: 24px;
+                font-size: 26px;
                 color: $primary2;
                 transition: all 0.2s ease-in;
                 padding: $s-1;

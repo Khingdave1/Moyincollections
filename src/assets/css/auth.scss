@@ -1,0 +1,15 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+
+.auth_content {
+    &_header {
+        margin-bottom: $s-3;
+    }
+    .form {
+        @include form();
+    }
+    &_others {
+        margin-top: $s-3;
+    }
+}

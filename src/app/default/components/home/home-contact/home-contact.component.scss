@@ -15,39 +15,7 @@
     &_talk {
         flex-basis: 45%;
         .form {
-            display: grid;
-            grid-gap: $s-2;
-            &_control {
-                label {
-                    display: inline-block;
-                    margin-bottom: $s-1;
-                }
-                &_input {
-                    border: 1px solid $grey3;
-                    transition: all .2s ease-in;
-                    width: 100%;
-                    input ,
-                    textarea{
-                        width: 100%;
-                        font-size: 16px;
-                        border: none;
-                        outline: none;
-                        padding: $s-2;
-                        &::placeholder {
-                            color: $black1;
-                            font-size: 16px;
-                        }
-                    }
-                    &:hover {
-                        border: 1px solid $black1;
-                    }
-                }
-            }
-            &_btn {
-                .btn {
-                    width: 100%;
-                }
-            }
+           @include form();
         }
     }
     &_info {
