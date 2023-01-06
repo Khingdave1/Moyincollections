@@ -10,6 +10,8 @@ import { WhatsappChatComponent } from './components/whatsapp-chat/whatsapp-chat.
 import { ClickedOutsideDirective } from './directives/clicked-outside.directive';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
+import { AlertPopupComponent } from './components/alert-popup/alert-popup.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -22,6 +24,8 @@ import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashbo
     WhatsappChatComponent,
     DashboardHeaderComponent,
     DashboardSidenavComponent,
+    AlertPopupComponent,
+    LoaderComponent,
     // ClickedOutsideDirective
   ],
   imports: [
@@ -37,6 +41,8 @@ import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashbo
     WhatsappChatComponent,
     DashboardHeaderComponent,
     DashboardSidenavComponent,
+    AlertPopupComponent,
+    LoaderComponent,
   ]
 })
 export class SharedModule { }

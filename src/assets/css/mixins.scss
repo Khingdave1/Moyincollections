@@ -47,28 +47,36 @@
         }
         &_input {
           background: $white-color;
-            border: 1px solid $grey3;
-            transition: all .2s ease-in;
-            width: 100%;
-            padding: 0 $s-2;
-            input ,
-            textarea{
-                width: 100%;
+          border: 1px solid $grey3;
+          transition: all .2s ease-in;
+          width: 100%;
+          padding: 0 $s-2;
+          input ,
+          textarea{
+              width: 100%;
+              font-size: 16px;
+              border: none;
+              outline: none;
+              padding: $s-2 0;
+              &::placeholder {
+                color: $black1;
                 font-size: 16px;
-                border: none;
-                outline: none;
-                padding: $s-2 0;
-                &::placeholder {
-                    color: $black1;
-                    font-size: 16px;
-                }
-            }
-            .icon {
-              font-size: 18px;
-            }
-            &:hover {
-                border: 1px solid $black1;
-            }
+              }
+          }
+          .icon {
+            font-size: 18px;
+          }
+          &:hover {
+            border: 1px solid $black1;
+          }
+          &.is-invalid {
+            border: 1px solid $error1 !important;
+          }
+        }
+        &_message {
+          // margin-top: $s-1;
+
+          color: $error1;
         }
     }
     &_btn {

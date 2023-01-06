@@ -71,6 +71,9 @@ textarea {
   outline: none;
   transition: all 0.4s;
   z-index: 1;
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 .prim_btn {
   color: $white-color;
@@ -99,27 +102,31 @@ textarea {
     color: $white-color;
   }
 }
+.load_btn {
+  display: flex;
+  justify-content: center;
+}
 
 /* Buttons ends */
 
-// .bg-success-color {
-//   background: $success100;
-// }
-// .bg-danger-color {
-//   background: $error100;
-// }
-// .bg-warning-color {
-//   background: $warning100;
-// }
-// .text-success {
-//   color: $success100;
-// }
-// .text-danger {
-//   color: $error100;
-// }
-// .text-warning {
-//   color: $warning100;
-// }
+.bg-success-color {
+  background: $success1;
+}
+.bg-danger-color {
+  background: $error1;
+}
+.bg-warning-color {
+  background: $warning1;
+}
+.text-success {
+  color: $success1;
+}
+.text-danger {
+  color: $error1;
+}
+.text-warning {
+  color: $warning1;
+}
 .dis-flex {
   display: flex;
   align-items: center;
