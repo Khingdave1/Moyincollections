@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class LoginComponent {
   isSignedin: boolean = false;
 
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private router: Router
