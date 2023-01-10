@@ -1,0 +1,78 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $white-color;
+    color: $white-color;
+    z-index: 150;
+    .header_container {
+        height: 4rem;
+        gap: $s-2;
+        justify-content: space-between;
+        background: $primary1;
+        padding: $s-1 $s-4;
+        @media only screen and (max-width: 997px) {
+            padding: $s-1 $s-2;
+        }
+        .header_left {
+            gap: $s-1;
+            &_menu {
+                display: none;
+                @media only screen and (max-width: 997px) {
+                    display: block;
+                }
+                .icon {
+                    font-size: 25px;
+                    padding: $s-1;
+                    transition: all 0.2s ease-in;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $primary2;
+                        border-radius: 50%;
+                    }   
+                }
+            }
+            .logo {
+                max-width: 102px;
+                height: 50px;
+            }
+        }
+        .header_right {
+            gap: $s-2;
+            justify-content: space-between;
+            &_profile {
+                gap: $s-1;
+                &_name {
+                    .role {
+                        margin-top: $s-1;
+                    }
+                }
+                &_avatar {
+                    @include icon-area($size: 40px, $color: $white-color);
+                    border: 1px solid $white-color;
+                    transition: 0.2s all ease;
+                    .icon {
+                        color: $primary1;
+                        font-size: 18px;
+                    }
+                }
+                &:hover {
+                    .header_right_profile_avatar {
+                        border: 1px solid $white-color;
+                        background: $primary1;
+                        .icon {
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
+            // .notifi {
+            //     @include icon-area($size: 40px, $color: $primary1);
+            // }
+        }
+    }
+}

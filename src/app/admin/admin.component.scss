@@ -1,0 +1,55 @@
+@import '../../assets/css/variables.scss';
+@import '../../assets/css/mixins.scss';
+
+.container-dash {
+  position: relative;
+  top: 4rem;
+    &_body {
+        @media only screen and (min-width: 997px) {
+            display: flex;
+            width: 100%;
+          }
+          // Side Nav starts //
+          .sidenav-area {
+            width: 15%;
+            min-height: 100vh;
+            position: relative;
+            left: 0;
+            border-right: 1px solid $divider-color1;
+            position: fixed;
+            background: $white-color;
+            .sidenav {
+              height: 100%; 
+              overflow-y: auto;
+            }
+            @media only screen and (max-width: 997px) {
+              position: fixed;
+              // top: calc(3rem + $s-2 + 1px);
+              left: -100%;
+              width: 200px;
+              transition: all 0.5s;
+              z-index: 100;
+              &.show-menu {
+                left: 0;
+              }
+              .sidenav {
+                width: 100%;
+              }
+            }
+          }
+          // Side Nav ends //
+
+        //   Main starts //
+        main {
+            width: 100%;
+            padding: $s-2;
+            position: relative;
+            @media only screen and (min-width: 997px) {
+              left: 15%;
+              width: 85%;
+              padding: $s-4;
+            }
+        }
+        //   Main ends //
+    }
+}

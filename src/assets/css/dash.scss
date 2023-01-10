@@ -1,0 +1,29 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.main_header {
+    gap: $s-2;
+    justify-content: space-between;
+    margin-bottom: $s-3;
+    .breadcrumb {
+        gap: $s-1;
+        .icon {
+            font-size: 18px;
+            vertical-align: middle;
+        }
+    }
+    .btns {
+        gap: $s-1;
+        .icon {
+            font-size: 25px;
+            padding: $s-1;
+            transition: all 0.2s ease-in;
+            display: inline-block;
+            cursor: pointer;
+            &:hover {
+                background-color: $grey2;
+                border-radius: 50%;
+            }
+        }
+    }
+}

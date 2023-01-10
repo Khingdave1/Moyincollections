@@ -1,1 +1,30 @@
-<p>dashboard-header works!</p>
+<header class="header">
+  <div class="header_container dis-flex">
+    <div class="header_left dis-flex">
+      <span class="header_left_menu clickable" (click)="toggleMenu()">
+        <i class="icon" [class]="!isMenuOpen ? 'bx bx-menu' : 'bx bx-x'"></i>
+      </span>
+      <img
+        src="../../../../assets/img/moheen-logo-white.png"
+        alt="image"
+        class="logo clickable"
+        routerLink="/"
+      />
+    </div>
+    <div class="header_right dis-flex">
+      <div class="header_right_profile clickable dis-flex" routerLink="/admin/settings">
+        <div class="header_right_profile_name">
+          <p>Hi, {{ user?.firstName }}</p>
+          <small class="role">Admin</small>
+        </div>
+        <span class="header_right_profile_avatar">
+          <i class='bx bx-user icon'></i>
+        </span>
+      </div>
+
+      <!-- <span class="notifi clickable">
+        <img src="../../../../assets/img/svg/bell.svg" alt="image" />
+      </span> -->
+    </div>
+  </div>
+</header>

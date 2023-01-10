@@ -1,1 +1,56 @@
-<p>dashboard-sidenav works!</p>
+<div class="sidenav_container">
+    <nav>
+      <ul>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-home icon'></i>
+          </span>
+          Overview
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/products"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bxs-backpack icon'></i>
+          </span>
+          Products
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/display-admins"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-clipboard icon'></i>
+          </span>
+          Orders
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/settings"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-cog icon' ></i>
+          </span>
+          Settings
+        </li>
+      </ul>
+    </nav>
+    <div class="log-out dis-flex hover-1">
+      <i class='bx bx-log-out icon'></i>
+      <p class="clickable" (click)="logOut()">Log Out</p>
+    </div>
+  </div>
+  

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class FirebaseService {
   private currentUserSubject: BehaviorSubject<any>
   public currentUser: Observable<any>
 
-  constructor(public firebaseAuth: AngularFireAuth, private authService: AuthService) {
+  constructor(public firebaseAuth: AngularFireAuth, private authService: AuthService, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('id') || '{}'))
     this.currentUser = this.currentUserSubject.asObservable()
   }
@@ -36,18 +37,6 @@ export class FirebaseService {
 
         this.currentUserSubject.next(res.user)
       })
-      // .catch(error => {
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-      //   if (errorCode === 'auth/wrong-password') {
-      //     console.log('Wrong password.');
-      //   } else {
-      //     console.log(errorMessage);
-      //   }
-      //   console.log(error);
-        
-      // })
-
   }
 
   // Sign Up
@@ -89,6 +78,8 @@ export class FirebaseService {
     localStorage.removeItem('token')
 
     this.currentUserSubject.next(null)
+
+    this.router.navigate(['/auth/login'])
 
   }
 }

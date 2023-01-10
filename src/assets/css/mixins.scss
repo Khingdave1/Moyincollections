@@ -16,27 +16,6 @@
     border-radius: 50%;
   }
   
-  // @mixin input-field($bor-col: $grey2, $bac-col: $white-color, $plac-col: $grey1, $inp-col: $black1) {
-  //   width: 100%;
-  //   border: 1px solid $bor-col;
-  //   border-radius: $border-radius2;
-  //   background: $bac-col;
-  //   transition: all .2s;
-  //   input,
-  //   textarea {
-  //     width: 100%;
-  //     padding: $s-2;
-  //     border-radius: $border-radius2;
-  //     border: none;
-  //     background: none;
-  //     outline: none;
-  //     color: $inp-col;
-  //     &::placeholder {
-  //       color: $plac-col;
-  //     }
-  //   }
-  // }
-  
   @mixin form {
     display: grid;
     grid-gap: $s-2;
