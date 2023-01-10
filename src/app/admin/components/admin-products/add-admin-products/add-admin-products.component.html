@@ -1,1 +1,22 @@
-<p>add-admin-products works!</p>
+<section class="main_header dis-flex">
+    <div class="breadcrumb dis-flex">
+        <h3 class="clickable" routerLink="/admin/products">Products</h3>
+        <i class="bx bx-chevron-right icon"></i>
+        <p [title]="'title'">
+            Add product
+        <!-- {{
+            survey?.title.length > 20
+            ? survey?.title.slice(0, 20) + "..."
+            : survey?.title
+        }} -->
+        </p>
+    </div>
+    <div class="btns dis-flex">
+      <!-- <button class="btn tert_btn">
+        Download CSV
+      </button> -->
+      <button class="btn prim_btn">
+        Save
+      </button>
+    </div>
+  </section>

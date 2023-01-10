@@ -4,10 +4,93 @@
     </div>
     <div class="btns dis-flex">
       <button class="btn tert_btn">
-        Download csv
+        Download CSV
       </button>
-      <button class="btn prim_btn">
-        Add Product
+      <button class="btn prim_btn" routerLink="add-product">
+        Add New Product
       </button>
     </div>
+  </section>
+
+  <section class="products">
+    <!-- Data Loading -->
+    <span class="loading-spinner" *ngIf="dataLoading">
+      <div class="spinner-3"></div>
+    </span>
+  
+    <ng-container *ngIf="products.length > 0">
+
+      <div class="products_header dis-flex">
+        <p>5 Products</p>
+        <div class="products_header_right dis-flex">
+          <div class="products_header_right_search dis-flex">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Enter name to search">
+          </div>
+          <div class="products_header_right_filter dis-flex clickable">
+            <p class="categ">All products</p>
+            <i class="bx bx-chevron-down icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container" >
+        <table>
+          <tr class="table-header">
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price (N)</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+          <tr class="table-body" *ngFor="let product of products">
+            <td class="image">
+              <a [href]="product?.image" target="_blank"><img [src]="product?.image" alt=""></a>
+              <!-- {{
+                product?.name.length > 30
+                  ? product?.name.slice(0, 30) + "..."
+                  : product?.name
+              }} -->
+            </td>
+            <td class="name">
+              <p>{{ product?.name }}</p>
+              <p class="description">{{ product?.description }}</p>
+            </td>
+            <td>{{ product?.price }}</td>
+            <td>{{ product.dateAdded }}</td>
+            <td class="actions">
+              <span class="actions_item edit" [routerLink]="'edit-product/' + product?.id ">
+                <i
+                  class="bx bx-edit-alt icon"
+                  (click)="editProduct(product)"
+                  title="Edit"
+                ></i>
+              </span>
+              <span class="actions_item delete">
+                <img src="../../../../../assets/img/svg/Delete.svg" alt="icon" title="Delete">
+              </span>
+              <!-- <i
+                class="icon suspend"
+                title="Suspend"
+                (click)="updateProductStatus(product)"
+                ></i> -->
+                <!-- [class]="product.available ? 'bx bx-play' : 'bx bx-pause'" -->
+            </td>
+          </tr>
+        </table>
+      </div>
+    </ng-container>
+  
+    <ng-container *ngIf="products.length === 0">
+      <div class="empty-list">
+        <h2>No product!</h2>
+        <span class="descp dis-flex">
+          <i class="bx bx-info-circle icon"></i>
+          <p>
+            Click on <strong>create product</strong> to get started.
+          </p>
+        </span>
+      </div>
+    </ng-container>
+    
   </section>

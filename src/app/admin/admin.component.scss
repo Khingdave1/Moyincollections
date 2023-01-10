@@ -4,6 +4,8 @@
 .container-dash {
   position: relative;
   top: 4rem;
+  background: $divider-color1;
+  min-height: 100vh;
     &_body {
         @media only screen and (min-width: 997px) {
             display: flex;

@@ -1,66 +1,70 @@
 @mixin card($value, $auto: auto-fill) {
-    display: grid;
-    grid-gap: $s-4;
-    @media only screen and (min-width: 450px) {
-      grid-template-columns: repeat($auto, minmax($value, 1fr));
-    }
+  display: grid;
+  grid-gap: $s-4;
+  @media only screen and (min-width: 450px) {
+    grid-template-columns: repeat($auto, minmax($value, 1fr));
   }
-  
-  @mixin icon-area($size, $color: transparent) {
-    display: inline-grid;
-    place-items: center;
-    min-width: $size;
-    height: $size;
-    border: 1px solid $color;
-    background: $color;
-    border-radius: 50%;
-  }
-  
-  @mixin form {
-    display: grid;
-    grid-gap: $s-2;
-    &_control {
-        label {
-            display: inline-block;
-            margin-bottom: $s-1;
-        }
-        &_input {
-          background: $white-color;
-          border: 1px solid $grey3;
-          transition: all .2s ease-in;
-          width: 100%;
-          padding: 0 $s-2;
-          input ,
-          textarea{
-              width: 100%;
-              font-size: 16px;
-              border: none;
-              outline: none;
-              padding: $s-2 0;
-              &::placeholder {
-                color: $black1;
-                font-size: 16px;
-              }
-          }
-          .icon {
-            font-size: 18px;
-          }
-          &:hover {
-            border: 1px solid $black1;
-          }
-          &.is-invalid {
-            border: 1px solid $error1 !important;
-          }
-        }
-        &_message {
-          // margin-top: $s-1;
+}
 
-          color: $error1;
+@mixin icon-area($size, $color: transparent) {
+  display: inline-grid;
+  place-items: center;
+  min-width: $size;
+  height: $size;
+  border: 1px solid $color;
+  background: $color;
+  border-radius: 50%;
+}
+
+@mixin form {
+  display: grid;
+  grid-gap: $s-2;
+  &_control {
+      label {
+          display: inline-block;
+          margin-bottom: $s-1;
+      }
+      &_input {
+        @include input-field();
+        &.is-invalid {
+          border: 1px solid $error1 !important;
         }
-    }
-    &_btn {
-        .btn {
-            width: 100%;
-        }
+      }
+      &_message {
+        // margin-top: $s-1;
+
+        color: $error1;
+      }
+  }
+  &_btn {
+      .btn {
+          width: 100%;
+      }
+  }
+}
+
+@mixin input-field {
+  background: $white-color;
+  border: 1px solid $grey3;
+  transition: all .2s ease-in;
+  width: 100%;
+  padding: 0 $s-2;
+  input ,
+  textarea{
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: $s-2 0;
+    &::placeholder {
+      color: $black1;
+      font-size: 16px;
     }
   }
+  .icon {
+    font-size: 18px;
+  }
+  &:hover {
+    border: 1px solid $black1;
+  }
+}

@@ -1,1 +1,151 @@
 @import '../../../../../assets/css/dash.scss';
+@import '../../../../../assets/css/variables.scss';
+@import '../../../../../assets/css/mixins.scss';
+
+
+.products {
+    background-color: $white-color;
+    border-radius: $border-radius3;
+    padding: $s-3;
+    box-shadow: $box-shadow1;
+    // overflow-x: scroll;
+    &_header {
+        gap: $s-2;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: $s-2;
+        &_right {
+            gap: $s-2;
+            &_search {
+                gap: 0.3rem;
+                @include input-field();
+                padding: 0 $s-1;
+                // width: auto;
+                input {
+                    padding: $s-1 0;
+                    width: auto;
+                }
+            }
+            &_filter {
+                gap: 0.3rem;
+                width: 100%;
+                background: $white-color;
+                border: 1px solid $grey3;
+                padding: $s-1; 
+                transition: all .2s ease-in;
+                .categ {
+                    font-size: 16px;
+                }
+                .icon {
+                    font-size: 18px;
+                }
+                &:hover {
+                    border: 1px solid $black1;
+                }
+            }
+
+        }
+    }
+}
+
+// Table starts
+.table-container {
+    overflow-x: auto;
+    // Table
+    table {
+        border-collapse: separate;
+        border-spacing: 0 $s-2;
+        width: 100%;
+        min-width: max-content;
+        td, th {
+            padding: $s-2;
+            font-weight: 400;
+            line-height: 17px;
+            letter-spacing: 0.01em;
+            text-align: left;
+        }
+        tr {
+            margin-bottom: $s-2;
+            &.table-header {
+                background-color: $divider-color1;
+                th {
+                    font-size: 18px;
+                    font-weight: 500;
+                    &:first-child {
+                        border-radius: $border-radius3 0 0 $border-radius3;
+                    }
+                    &:last-child {
+                        border-radius: 0 $border-radius3 $border-radius3 0;
+                    }
+                }
+            }
+            &.table-body {
+                cursor: pointer;
+                td {
+                    border-top: 1px solid $divider-color2; 
+                    border-bottom: 1px solid $divider-color2;
+                    &:first-child {
+                        border-radius: $border-radius3 0 0 $border-radius3;
+                        border-left: 1px solid $divider-color2;
+                        transition: all 0.2s ease-in;
+                    }
+                    &:last-child {
+                        border-radius: 0 $border-radius3 $border-radius3 0;
+                        border-right: 1px solid $divider-color2;
+                    }
+                    &.image {
+                        img {
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+                    &.name {
+                        p {
+                            &.description {
+                                margin-top: $s-1;
+                                font-size: 14;
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                    &.actions {
+                        .actions_item {
+                            transition: all 0.2s ease-in;
+                            padding: $s-1;
+                            cursor: pointer;
+                            @include icon-area(40px);
+                            &:hover {
+                                background-color: $divider-color1;
+                                border-radius: 50%;
+                            }
+                            &:not(:last-child) {
+                                margin-right: $s-1;
+                            }
+                            .icon {
+                                font-size: 25px;
+                            } 
+                            &.edit {
+                                .icon {
+                                    color: $primary2;
+                                }
+                            } 
+                            &.delete {
+                                img {
+                                    width: 25px;
+                                }
+                            } 
+                        }
+                    }
+                }
+                &:hover {
+                    td {
+                        &:first-child {
+                            border-left: 1px solid $secondary1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Table ends
