@@ -14,14 +14,12 @@
 
   <section class="products">
     <!-- Data Loading -->
-    <span class="loading-spinner" *ngIf="dataLoading">
-      <div class="spinner-3"></div>
-    </span>
+    <app-loader class="loading" *ngIf="dataLoading"></app-loader>
   
-    <ng-container *ngIf="products.length > 0">
+    <ng-container *ngIf="products?.length > 0">
 
       <div class="products_header dis-flex">
-        <p>5 Products</p>
+        <p>{{products?.length}} Products</p>
         <div class="products_header_right dis-flex">
           <div class="products_header_right_search dis-flex">
             <i class="bx bx-search icon"></i>
@@ -45,7 +43,7 @@
           </tr>
           <tr class="table-body" *ngFor="let product of products">
             <td class="image">
-              <a [href]="product?.image" target="_blank"><img [src]="product?.image" alt=""></a>
+              <a [href]="product?.image" target="_blank"><img [src]="product?.imageUrl" alt=""></a>
               <!-- {{
                 product?.name.length > 30
                   ? product?.name.slice(0, 30) + "..."
@@ -53,7 +51,7 @@
               }} -->
             </td>
             <td class="name">
-              <p>{{ product?.name }}</p>
+              <p class="clickable" [routerLink]="'edit-product/' + product?.id ">{{ product?.name }}</p>
               <p class="description">{{ product?.description }}</p>
             </td>
             <td>{{ product?.price }}</td>
@@ -81,7 +79,7 @@
       </div>
     </ng-container>
   
-    <ng-container *ngIf="products.length === 0">
+    <ng-container *ngIf="products?.length === 0">
       <div class="empty-list">
         <h2>No product!</h2>
         <span class="descp dis-flex">

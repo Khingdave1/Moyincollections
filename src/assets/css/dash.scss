@@ -1,6 +1,12 @@
 @import './variables.scss';
 @import './mixins.scss';
 
+
+.loading {
+    display: flex;
+    justify-content: center;
+}
+
 .main_header {
     gap: $s-2;
     justify-content: space-between;
@@ -25,6 +31,95 @@
                 background-color: $grey2;
                 border-radius: 50%;
             }
+        }
+    }
+}
+
+.product_form-area {
+    @include white-container();
+    @media screen and (min-width: 800px) {
+        width: 60%;
+    }
+    .form {
+        @include form();
+        width: 100%;
+        // Upload
+        .form_control.upload,
+        .form_control.select {
+            .form_control_input {
+                gap: $s-2;
+                justify-content: space-between;
+                padding: $s-2;
+                
+                .title {
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+                .icon {
+                    font-size: 21px;
+                }
+            }
+            .file-name {
+                margin-top: 0.3rem;
+            }
+        }
+        .form_btn {
+            gap: $s-2;
+        }
+    }
+}
+
+
+// Dropdown
+.dropdown {
+    position: relative;
+    &_list {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        width: 100%;
+        background-color: $white-color;
+        border: 1px solid $grey1;
+        box-shadow: $box-shadow2;
+        z-index: 100;
+        &.show {
+            display: block;
+        }
+        &_item {
+            padding: $s-1;
+            cursor: pointer;
+            transition: all .2s ease-in;
+            &:not(:last-child) {
+                border-bottom: 1px solid $divider-color1;
+            }
+            &:hover {
+                background-color: $inner-border;
+            }
+        }
+    }
+}
+
+// Categ list
+.categ_list {
+    gap: $s-1;
+    // justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: $s-1;
+    &_item {
+        background: $secondary2;
+        color: $white-color;
+        // border: 1px solid $grey1;
+        border-radius: 20px;
+        padding: 0.2rem;
+        .icon {
+        font-size: 20px;
+        transition: all 0.2s ease-in;
+        padding: 0.1rem;
+        // margin-left: $s-1;
+        &:hover {
+            background-color: $inner-border;
+            border-radius: 50%;
+        }
         }
     }
 }

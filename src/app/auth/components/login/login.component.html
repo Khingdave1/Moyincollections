@@ -15,23 +15,23 @@
       </div>
       <form class="form" [formGroup]="userForm" (ngSubmit)="login()">
         <div class="form_control">
-            <label for="email">Email</label>
-            <div class="form_control_input" [ngClass]="{
-              'is-invalid': isFormSubmitted && userForm.controls.email.errors
-            }">
-                <input type="email" id="email" placeholder="Enter email" formControlName="email">
-            </div>
-            <div
-              class="form_control_message"
-              *ngIf="isFormSubmitted && userForm.controls.email.errors"
+          <label for="email">Email</label>
+          <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && userForm.controls.email.errors
+          }">
+              <input type="email" id="email" placeholder="Enter email" formControlName="email">
+          </div>
+          <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && userForm.controls.email.errors"
+          >
+            <small *ngIf="userForm.controls.email.errors.required"
+              >Email is required</small
             >
-              <small *ngIf="userForm.controls.email.errors.required"
-                >Email is required</small
-              >
-              <small *ngIf="userForm.controls.email.errors.email"
-                >Email is invalid</small
-              >
-            </div>
+            <small *ngIf="userForm.controls.email.errors.email"
+              >Email is invalid</small
+            >
+          </div>
         </div>
         <div class="form_control">
             <label for="password">Password</label>
@@ -64,12 +64,12 @@
             <app-loader></app-loader>
           </button>
         </div>
-    </form>
-    <div class="auth_content_others">
-      <span class="clickable hover-1" routerLink="/auth/forgot-password"
-        >Forgot Password?</span
-      >
-    </div>
+      </form>
+      <div class="auth_content_others">
+        <span class="clickable hover-1" routerLink="/auth/forgot-password"
+          >Forgot Password?</span
+        >
+      </div>
     </div>
   </div>
   

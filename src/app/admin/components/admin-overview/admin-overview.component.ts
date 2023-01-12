@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AdminOverviewComponent {
 
   userId: any;
-  users: any;
   user: any;
 
   constructor(private authService: AuthService) { }
@@ -18,7 +17,7 @@ export class AdminOverviewComponent {
   ngOnInit(): void {
     // Get single User Informations
     this.userId = JSON.parse(localStorage.getItem('id') || '{}')
-    this.users = this.authService.getSingleUser(this.userId).subscribe((res: any) => {
+    this.authService.getSingleUser(this.userId).subscribe((res: any) => {
       res.forEach((r: any) => {
         let item = r.payload.doc.data() as IAuth
         this.user = item

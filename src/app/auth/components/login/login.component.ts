@@ -12,10 +12,10 @@ export class LoginComponent {
 
   loading: boolean = false;
   alertMessage: string = '';
+  alertColor: string = '';
   isAlert: boolean = false;
   userForm: any = FormGroup;
   hide: boolean = true;
-  alertColor: string = '';
   isFormSubmitted: boolean = false;
   isSignedin: boolean = false;
 
@@ -101,6 +101,7 @@ export class LoginComponent {
     }
   }
 
+  // Sign up
   async signUp() {
     // Start loading
     this.loading = true;

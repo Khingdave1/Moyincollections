@@ -2,12 +2,8 @@
 @import '../../../../../assets/css/variables.scss';
 @import '../../../../../assets/css/mixins.scss';
 
-
 .products {
-    background-color: $white-color;
-    border-radius: $border-radius3;
-    padding: $s-3;
-    box-shadow: $box-shadow1;
+    @include white-container();
     // overflow-x: scroll;
     &_header {
         gap: $s-2;
@@ -80,7 +76,6 @@
                 }
             }
             &.table-body {
-                cursor: pointer;
                 td {
                     border-top: 1px solid $divider-color2; 
                     border-bottom: 1px solid $divider-color2;

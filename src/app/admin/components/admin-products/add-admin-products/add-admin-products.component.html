@@ -1,3 +1,10 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [text]="alertMessage"
+  [color]="alertColor"
+></app-alert-popup>
+
 <section class="main_header dis-flex">
     <div class="breadcrumb dis-flex">
         <h3 class="clickable" routerLink="/admin/products">Products</h3>
@@ -15,8 +22,124 @@
       <!-- <button class="btn tert_btn">
         Download CSV
       </button> -->
-      <button class="btn prim_btn">
-        Save
+      <button class="btn prim_btn" routerLink="/admin/products">
+        Back to Products
       </button>
     </div>
+  </section>
+
+  <section class="product_form-area">
+    <form class="form" [formGroup]="productForm">
+      <div class="form_control upload">
+        <label for="email">Image</label>
+        <div
+          class="form_control_input clickable dis-flex"
+          appDragDrop
+          (click)="fileInput.click()"
+          (fileDropped)="uploadFile($event)"
+        >
+        <p class="title">Upload image</p>
+        <i class='bx bx-cloud-upload icon' ></i>
+        </div>
+        <input
+          type="file"
+          id="sheet"
+          (change)="uploadFile($event)"
+          hidden
+          #fileInput
+          />
+        <p class="file-name">{{ selectedFileName }}</p>
+      </div>
+      <div class="form_control">
+        <label for="name">Name</label>
+        <div class="form_control_input" [ngClass]="{
+          'is-invalid': isFormSubmitted && productForm.controls.name.errors
+        }">
+            <input type="text" id="name" placeholder="Enter name" formControlName="name">
+        </div>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && productForm.controls.name.errors"
+        >
+          <small *ngIf="productForm.controls.name.errors.required"
+            >Name is required</small
+          >
+        </div>
+      </div>
+      <div class="form_control">
+        <label for="description">Description</label> 
+        <div class="form_control_input" [ngClass]="{
+          'is-invalid': isFormSubmitted && productForm.controls.description.errors
+        }">
+            <!-- <input type="text" id="description"> -->
+            <textarea name="description" id="description" cols="30" rows="3"  placeholder="Enter description" formControlName="description"></textarea>
+        </div>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && productForm.controls.description.errors"
+        >
+          <small *ngIf="productForm.controls.description.errors.required"
+            >Description is required</small
+          >
+        </div>
+      </div>
+      <!-- Select -->
+      <div class="form_control select">
+        <label for="description">Categories</label> 
+        <div class="dropdown" >
+          <div class="form_control_input clickable dis-flex"
+          (click)="toggleCateg()"
+          >
+            <p class="title">Add a category</p>
+            <i class='bx bx-chevron-down icon' [class]="isCateg ? 'bx bx-chevron-up' : 'bx bx-chevron-down'"></i>
+          </div>
+          <!-- Dropdown -->
+          <ul class="dropdown_list" [class.show]="isCateg">
+            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
+            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
+            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
+            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
+          </ul>
+        </div>
+        <!-- Category list -->
+        <div class="categ_list dis-flex" *ngIf="isCategList">
+          <div
+            class="categ_list_item dis-flex"
+            *ngFor="let categ of categList; let categIndex = index"
+          >
+            <small [title]="categ">{{
+              categ.length > 12 ? categ.slice(0, 10) + "..." : categ
+            }}</small>
+            <i
+              class="bx bx-x icon clickable"
+              (click)="removeCateg(categIndex)"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form_control">
+        <label for="price">Price</label>
+        <div class="form_control_input" [ngClass]="{
+          'is-invalid': isFormSubmitted && productForm.controls.price.errors
+        }">
+            <input type="number" id="price" placeholder="Enter price E.g 1200" formControlName="price">
+        </div>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && productForm.controls.price.errors"
+        >
+          <small *ngIf="productForm.controls.price.errors.required"
+            >price is required</small
+          >
+        </div>
+      </div>
+      <div class="form_btn dis-flex">
+        <button class="btn sec_btn" *ngIf="!loading" (click)="saveAndNewProduct()">Save and New</button>
+        <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseProduct()">Save and Close</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+      </div>
+    </form>
   </section>

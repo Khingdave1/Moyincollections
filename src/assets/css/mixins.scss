@@ -16,6 +16,13 @@
   border-radius: 50%;
 }
 
+@mixin white-container {
+  background-color: $white-color;
+  border-radius: $border-radius3;
+  padding: $s-3;
+  box-shadow: $box-shadow1;
+}
+
 @mixin form {
   display: grid;
   grid-gap: $s-2;
