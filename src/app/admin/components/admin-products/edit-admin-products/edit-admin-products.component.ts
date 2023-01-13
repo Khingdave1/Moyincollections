@@ -121,10 +121,6 @@ export class EditAdminProductsComponent {
     // this.ngOnInit()
   }
 
-
-
-
-
   // Update product
   updateProduct() {
     this.validateForm()
@@ -138,7 +134,6 @@ export class EditAdminProductsComponent {
       discountPrice: this.productForm.value.discountPrice
     }
     
-
     // post
     this.productService.updateProduct(this.currentProductId.productId, paylooad).then(res => {
       console.log(res);

@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AlertPopupComponent {
 
-  @Input() text: string = '';
-  @Input() color: string = '';
+  @Input() alertMessage: string = '';
+  @Input() alertColor: string = '';
 
 }

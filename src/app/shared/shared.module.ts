@@ -12,6 +12,7 @@ import { DashboardHeaderComponent } from './components/dashboard-header/dashboar
 import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
 import { AlertPopupComponent } from './components/alert-popup/alert-popup.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 
 
@@ -26,6 +27,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     DashboardSidenavComponent,
     AlertPopupComponent,
     LoaderComponent,
+    ConfirmModalComponent,
     // ClickedOutsideDirective
   ],
   imports: [
@@ -43,6 +45,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     DashboardSidenavComponent,
     AlertPopupComponent,
     LoaderComponent,
+    ConfirmModalComponent,
   ]
 })
 export class SharedModule { }

@@ -123,3 +123,14 @@
         }
     }
 }
+
+// Empty list
+.empty-list {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    &_instruct {
+        margin-top: $s-1;
+        gap: $s-1;
+    }
+}

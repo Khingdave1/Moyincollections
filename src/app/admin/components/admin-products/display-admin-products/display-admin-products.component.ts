@@ -66,6 +66,8 @@ export class DisplayAdminProductsComponent implements OnInit {
   ]
   dataLoading: boolean = true;
   products: any;
+  currentProduct: any;
+  confirmModal: boolean = false;
 
   constructor(
     private productService: ProductService, 
@@ -85,12 +87,26 @@ export class DisplayAdminProductsComponent implements OnInit {
     })
   }
 
+  // Edit product
   editProduct(product: any) {
     this.router.navigate([`admin/products/edit-product/${product.id}`])
   }
 
-  deleteProduct(product: any) {
+  // Open confirm modal
+  openConfirmModal(product: any) {
+    this.confirmModal = true;
 
+    this.currentProduct = product
+  }
+
+  // Close confirm modal
+  closeConfirmModal() {
+    this.confirmModal = false
+  }
+
+  // Delete Product from firebase
+  deleteProduct(productId: any) {
+    this.productService.deleteProduct(productId.id)
   }
 
   updateProductStatus(product: any) {

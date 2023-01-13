@@ -1,9 +1,9 @@
 <div
   class="alert"
   id="alert"
-  [class.bg-success-color]="color == 'success'"
-  [class.bg-danger-color]="color == 'error'"
-  [class.bg-warning-color]="color == 'warning'"
+  [class.bg-success-color]="alertColor == 'success'"
+  [class.bg-danger-color]="alertColor == 'error'"
+  [class.bg-warning-color]="alertColor == 'warning'"
 >
-  <p>{{ text }}</p>
+  <p>{{ alertMessage }}</p>
 </div>

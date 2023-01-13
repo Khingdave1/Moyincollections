@@ -64,7 +64,7 @@
                   title="Edit"
                 ></i>
               </span>
-              <span class="actions_item delete">
+              <span class="actions_item delete" (click)="openConfirmModal(product)">
                 <img src="../../../../../assets/img/svg/Delete.svg" alt="icon" title="Delete">
               </span>
               <!-- <i
@@ -81,14 +81,16 @@
   
     <ng-container *ngIf="products?.length === 0">
       <div class="empty-list">
-        <h2>No product!</h2>
-        <span class="descp dis-flex">
+        <h3>No product!</h3>
+        <span class="empty-list_instruct dis-flex">
           <i class="bx bx-info-circle icon"></i>
           <p>
-            Click on <strong>create product</strong> to get started.
+            Click on <strong>Add New Product</strong> to get started.
           </p>
         </span>
       </div>
     </ng-container>
     
   </section>
+
+  <app-confirm-modal *ngIf="confirmModal" [data]="currentProduct" [dataType]="'product'" (confirmModal)="closeConfirmModal()"></app-confirm-modal>

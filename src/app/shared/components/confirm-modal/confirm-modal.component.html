@@ -1,0 +1,25 @@
+<!-- Alert message -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+
+<div class="modal" *ngIf="confirmModal">
+    <div class="modal_area">
+        <div class="modal-details">
+            <h3 class="text-primary-color">Confirm delete</h3>
+            <p>
+                Are you sure you want to delete <strong class="text-primary-color">{{ data?.name }}</strong>?
+            </p>
+            </div>
+            <!-- Buttons -->
+            <div class="modal-btns dis-flex">
+            <button type="button" class="btn skip_btn" (click)="closeConfirmModal()">
+                Cancel
+            </button>
+            <button class="btn prim_btn" *ngIf="dataType === 'product'" (click)="deleteProduct()">Delete</button>
+        </div>
+    </div>
+</div>
