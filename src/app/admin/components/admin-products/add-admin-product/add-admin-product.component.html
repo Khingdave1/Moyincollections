@@ -28,7 +28,7 @@
     </div>
   </section>
 
-  <section class="product_form-area">
+  <section class="form-section">
     <form class="form" [formGroup]="productForm">
       <div class="form_control upload">
         <label for="email">Image</label>
@@ -37,18 +37,30 @@
           appDragDrop
           (click)="fileInput.click()"
           (fileDropped)="uploadFile($event)"
+          [ngClass]="{
+            'is-invalid': isFormSubmitted && productForm.controls.image.errors
+          }"
         >
-        <p class="title">Upload image</p>
-        <i class='bx bx-cloud-upload icon' ></i>
+          <p class="title">Upload image</p>
+          <i class='bx bx-cloud-upload icon' ></i>
         </div>
         <input
           type="file"
           id="sheet"
           (change)="uploadFile($event)"
           hidden
+          formControlName="image"
           #fileInput
           />
         <p class="file-name">{{ selectedFileName }}</p>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && productForm.controls.image.errors"
+        >
+          <small *ngIf="productForm.controls.image.errors.required"
+            >Image is required</small
+          >
+        </div>
       </div>
       <div class="form_control">
         <label for="name">Name</label>
@@ -95,10 +107,7 @@
           </div>
           <!-- Dropdown -->
           <ul class="dropdown_list" [class.show]="isCateg">
-            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
+            <li class="dropdown_list_item" (click)="addCateg(category.name)" *ngFor="let category of categories">{{category.name}}</li>
           </ul>
         </div>
         <!-- Category list -->
@@ -107,8 +116,8 @@
             class="categ_list_item dis-flex"
             *ngFor="let categ of categList; let categIndex = index"
           >
-            <small [title]="categ">{{
-              categ.length > 12 ? categ.slice(0, 10) + "..." : categ
+            <small [title]="categ.name">{{
+              categ.name.length > 12 ? categ.name.slice(0, 10) + "..." : categ.name
             }}</small>
             <i
               class="bx bx-x icon clickable"
@@ -131,6 +140,22 @@
         >
           <small *ngIf="productForm.controls.price.errors.required"
             >price is required</small
+          >
+        </div>
+      </div>
+      <div class="form_control">
+        <label for="totalQuantity">Quantity</label>
+        <div class="form_control_input" [ngClass]="{
+          'is-invalid': isFormSubmitted && productForm.controls.price.errors
+        }">
+            <input type="number" id="totalQuantity" placeholder="Enter quantity" formControlName="totalQuantity">
+        </div>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && productForm.controls.totalQuantity.errors"
+        >
+          <small *ngIf="productForm.controls.totalQuantity.errors.required"
+            >totalQuantity is required</small
           >
         </div>
       </div>

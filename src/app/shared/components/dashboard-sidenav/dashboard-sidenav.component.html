@@ -27,6 +27,17 @@
         <li
           class="dis-flex"
           routerLinkActive="active"
+          routerLink="/admin/categories"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-category icon'></i>
+          </span>
+          Categories
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
           routerLink="/admin/display-admins"
           (click)="closeMenu()"
         >

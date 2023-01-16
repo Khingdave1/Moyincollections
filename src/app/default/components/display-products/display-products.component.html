@@ -1,21 +1,31 @@
-<div class="products_list">
-    <div class="products_list_item" *ngFor="let product of products">
-        <a [href]="product.image">
-            <img [src]="product.image" alt="image" class="products_list_item_img" >
-        </a>
-        <h3 class="products_list_item_title uc">{{product.name}}</h3>
-        
-        <div class="dis-flex products_list_item_bottom">
-            <p>N{{product.price | number}}</p>
+<!-- Data Loading -->
+<app-loader class="loading" *ngIf="dataLoading"></app-loader>
 
-            <span class="products_list_item_bottom_icon" (click)="showProductDetails(product)">
-                <i class='bx bx-plus'></i>
-            </span>
+<ng-container *ngIf="products?.length > 0">
+    <div class="products_list">
+        <div class="products_list_item" *ngFor="let product of products">
+            <a [href]="product.image">
+                <!-- <img [src]="product.image" alt="image" class="products_list_item_img" > -->
+                <img src="../../../../assets/img/wall-deco.jpg" alt="image" class="products_list_item_img" >
+            </a>
+            <h3 class="products_list_item_title uc">{{product.name}}</h3>
+            
+            <div class="dis-flex products_list_item_bottom">
+                <p>N{{product.price | number}}</p>
+    
+                <span class="products_list_item_bottom_icon" (click)="showProductDetails(product)">
+                    <i class='bx bx-plus'></i>
+                </span>
+            </div>
+            <!-- <div class="products_list_item_content">
+            </div> -->
         </div>
-        <!-- <div class="products_list_item_content">
-        </div> -->
     </div>
-</div>
+
+    <div class="products_more">
+        <button class="btn sec_btn" routerLink="/products">View More</button>
+    </div>
+</ng-container>
 
 
 <div class="modal" *ngIf="isModal">

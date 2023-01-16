@@ -16,6 +16,13 @@ export class CategoryService {
     return this.collectionPath.snapshotChanges()
   }
 
+  // Get single category
+  getSingleCategory(categoryId: string) {
+    return new Promise<any>((resolve, reject) => {
+      this.collectionPath.doc(categoryId).ref.get().then(res => resolve(res), err => reject(err))
+    })
+  }
+
   // Add category
   addCategory(payload: any) {
     return new Promise<any>((resolve, reject) => {
@@ -24,7 +31,7 @@ export class CategoryService {
   }
 
   // Edit category
-  editCategory(categoryId: string, payload: any) {
+  updateCategory(categoryId: string, payload: any) {
     return new Promise<any>((resolve, reject) => {
       this.db.doc(this.collectionName + '/' + categoryId).update(payload).then(res => resolve(res), err => reject(err))
     })

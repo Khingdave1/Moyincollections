@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -15,7 +16,10 @@ export class ConfirmModalComponent {
   alertMessage: string;
   alertColor: string;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private categoryService: CategoryService
+  ) {}
 
   // Close modal
   closeConfirmModal() {
@@ -25,6 +29,17 @@ export class ConfirmModalComponent {
   // Delete Product from firebase
   deleteProduct() {
     this.productService.deleteProduct(this.data.id)
+
+    this.showAlertPopup('Deleted successfully', 'success')
+
+    setTimeout(() => {
+      this.closeConfirmModal()
+    }, 3000);
+  }
+
+  // Delete Category from firebase
+  deleteCategory() {
+    this.categoryService.deleteCategory(this.data.id)
 
     this.showAlertPopup('Deleted successfully', 'success')
 

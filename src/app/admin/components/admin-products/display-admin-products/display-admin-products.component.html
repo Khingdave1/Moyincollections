@@ -12,20 +12,20 @@
     </div>
   </section>
 
-  <section class="products">
+  <section class="data-container">
     <!-- Data Loading -->
     <app-loader class="loading" *ngIf="dataLoading"></app-loader>
   
     <ng-container *ngIf="products?.length > 0">
 
-      <div class="products_header dis-flex">
-        <p>{{products?.length}} Products</p>
-        <div class="products_header_right dis-flex">
-          <div class="products_header_right_search dis-flex">
+      <div class="data-container_header dis-flex">
+        <p>{{products?.length > 1 ? products?.length + ' ' + 'Products' : products?.length + ' ' + 'Product'}}</p>
+        <div class="data-container_header_right dis-flex">
+          <div class="data-container_header_right_search dis-flex">
             <i class="bx bx-search icon"></i>
             <input type="text" placeholder="Enter name to search">
           </div>
-          <div class="products_header_right_filter dis-flex clickable">
+          <div class="data-container_header_right_filter dis-flex clickable">
             <p class="categ">All products</p>
             <i class="bx bx-chevron-down icon"></i>
           </div>
@@ -38,7 +38,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price (N)</th>
-            <th>Status</th>
+            <th>Quantity</th>
             <th>Actions</th>
           </tr>
           <tr class="table-body" *ngFor="let product of products">
@@ -54,8 +54,9 @@
               <p class="clickable" [routerLink]="'edit-product/' + product?.id ">{{ product?.name }}</p>
               <p class="description">{{ product?.description }}</p>
             </td>
-            <td>{{ product?.price }}</td>
-            <td>{{ product.dateAdded }}</td>
+            <td>{{ product?.price | number }}</td>
+            <!-- <td>{{ product.dateAdded }}</td> -->
+            <td>{{ product.totalQuantity }}</td>
             <td class="actions">
               <span class="actions_item edit" [routerLink]="'edit-product/' + product?.id ">
                 <i

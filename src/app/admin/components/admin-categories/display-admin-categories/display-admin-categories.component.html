@@ -1,0 +1,74 @@
+<section class="main_header dis-flex">
+    <div class="breadcrumb">
+      <h3 class="clickable" routerLink="/admin/categories">Categories</h3>
+    </div>
+    <div class="btns dis-flex">
+      <button class="btn tert_btn">
+        Download CSV
+      </button>
+      <button class="btn prim_btn" routerLink="add-category">
+        Add New Category
+      </button>
+    </div>
+  </section>
+
+  <section class="data-container">
+    <!-- Data Loading -->
+    <app-loader class="loading" *ngIf="dataLoading"></app-loader>
+  
+    <ng-container *ngIf="categories?.length > 0">
+
+      <div class="data-container_header dis-flex">
+        <p>{{categories?.length > 1 ? categories?.length + ' ' + 'Categories' : categories?.length + ' ' + 'Category'}}</p>
+        <div class="data-container_header_right dis-flex">
+          <div class="data-container_header_right_search dis-flex">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Enter name to search">
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container" >
+        <table>
+          <tr class="table-header">
+            <th>Name</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </tr>
+          <tr class="table-body" *ngFor="let category of categories">
+            <td class="name">
+              <p class="clickable" [routerLink]="'edit-category/' + category?.id ">{{ category?.name }}</p>
+            </td>
+            <td>{{ category?.dateAdded | date: 'medium' }}</td>
+            <td class="actions">
+              <span class="actions_item edit" [routerLink]="'edit-category/' + category?.id ">
+                <i
+                  class="bx bx-edit-alt icon"
+                  (click)="editCategory(category)"
+                  title="Edit"
+                ></i>
+              </span>
+              <span class="actions_item delete" (click)="openConfirmModal(category)">
+                <img src="../../../../../assets/img/svg/Delete.svg" alt="icon" title="Delete">
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </ng-container>
+  
+    <ng-container *ngIf="categories?.length === 0">
+      <div class="empty-list">
+        <h3>No Category!</h3>
+        <span class="empty-list_instruct dis-flex">
+          <i class="bx bx-info-circle icon"></i>
+          <p>
+            Click on <strong>Add New Category</strong> to get started.
+          </p>
+        </span>
+      </div>
+    </ng-container>
+    
+  </section>
+
+  <app-confirm-modal *ngIf="confirmModal" [data]="currentCategory" [dataType]="'category'" (confirmModal)="closeConfirmModal()"></app-confirm-modal>

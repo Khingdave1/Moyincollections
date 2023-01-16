@@ -9,13 +9,12 @@
     <div class="breadcrumb dis-flex">
         <h3 class="clickable" routerLink="/admin/products">Products</h3>
         <i class="bx bx-chevron-right icon"></i>
-        <p [title]="'title'">
-            Edit product
-        <!-- {{
-            survey?.title.length > 20
-            ? survey?.title.slice(0, 20) + "..."
-            : survey?.title
-        }} -->
+        <p [title]="product?.name">
+        {{
+            product?.name.length > 20
+            ? product?.name.slice(0, 20) + "..."
+            : product?.name
+        }}
         </p>
     </div>
     <div class="btns dis-flex">
@@ -28,7 +27,7 @@
     </div>
   </section>
 
-  <section class="product_form-area">
+  <section class="form-section">
     <form class="form" [formGroup]="productForm">
       <div class="form_control upload">
         <label for="email">Image</label>
@@ -75,10 +74,7 @@
           </div>
           <!-- Dropdown -->
           <ul class="dropdown_list" [class.show]="isCateg">
-            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Chairs')">Chairs</li>
-            <li class="dropdown_list_item" (click)="addCateg('Rugs')">Rugs</li>
+            <li class="dropdown_list_item" (click)="addCateg(category.name)" *ngFor="let category of categories">{{category.name}}</li>
           </ul>
         </div>
         <!-- Category list -->
@@ -87,8 +83,8 @@
             class="categ_list_item dis-flex"
             *ngFor="let categ of categList; let categIndex = index"
           >
-            <small [title]="categ">{{
-              categ.length > 12 ? categ.slice(0, 10) + "..." : categ
+            <small [title]="categ.name">{{
+              categ.name.length > 12 ? categ.name.slice(0, 10) + "..." : categ.name
             }}</small>
             <i
               class="bx bx-x icon clickable"
@@ -108,6 +104,12 @@
         <label for="discountPrice">Discount Price</label>
         <div class="form_control_input">
             <input type="number" id="discountPrice" placeholder="Enter discount price E.g 1200" formControlName="discountPrice">
+        </div>
+      </div>
+      <div class="form_control">
+        <label for="totalQuantity">Quantity</label> 
+        <div class="form_control_input">
+            <input type="number" id="totalQuantity" placeholder="Enter quantity" formControlName="totalQuantity">
         </div>
       </div>
       <div class="form_btn dis-flex">

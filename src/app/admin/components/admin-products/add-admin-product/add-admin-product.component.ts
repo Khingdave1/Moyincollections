@@ -6,11 +6,11 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
-  selector: 'app-add-admin-products',
-  templateUrl: './add-admin-products.component.html',
-  styleUrls: ['./add-admin-products.component.scss']
+  selector: 'app-add-admin-product',
+  templateUrl: './add-admin-product.component.html',
+  styleUrls: ['./add-admin-product.component.scss']
 })
-export class AddAdminProductsComponent {
+export class AddAdminProductComponent {
 
   loading: boolean = false;
   alertMessage: string = '';
@@ -49,17 +49,17 @@ export class AddAdminProductsComponent {
 
     // User form
     this.productForm = this.formBuilder.group({
-      // image: [this.selectedFileName],
+      image: ['', [Validators.required]],
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      // dateAdded: [''],
       // status: ['available'],
       // categories: [this.categList],
       price: ['', [Validators.required]],
       // discountedPrice: ['', [Validators.required]],
-      // totalQuantity: ['']
+      totalQuantity: ['', [Validators.required]]
     });
   }
+
 
   // Toggle Category
   toggleCateg() {
@@ -74,7 +74,7 @@ export class AddAdminProductsComponent {
     // If doesn't exist add new category
     let exist = this.categList.includes(categ);
     if (!exist) {
-      this.categList.push(categ);
+      this.categList.push({ name: categ});
 
       this.isCateg = false
       // this.ngOnInit()
@@ -124,14 +124,14 @@ export class AddAdminProductsComponent {
       console.log(res);
 
       this.showAlert('Product added successfully', 'success')
-      // Stop loading
-      this.loading = false;
-
+      
       // Reset form
       this.productForm.reset();
       this.selectedFileName = ''
       this.categList = []
-
+      
+      // Stop loading
+      this.loading = false;
     }).catch(err => {
       console.log(err)
     })
@@ -145,8 +145,11 @@ export class AddAdminProductsComponent {
       description: this.productForm.value.description,
       categories: this.categList,
       price: this.productForm.value.price,
-      discountedPrice: ''
+      discountedPrice: '',
+      totalQuantity: this.productForm.value.totalQuantity,
+      dateAdded: new Date().toISOString()
     }
+    
   }
 
   // Validate form

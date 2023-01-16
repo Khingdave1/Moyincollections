@@ -1,0 +1,42 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<section class="main_header dis-flex">
+    <div class="breadcrumb dis-flex">
+        <h3 class="clickable" routerLink="/admin/categories">Categories</h3>
+        <i class="bx bx-chevron-right icon"></i>
+        <p [title]="category?.name">
+        {{
+            category?.name.length > 20
+            ? category?.name.slice(0, 20) + "..."
+            : category?.name
+        }}
+        </p>
+    </div>
+    <div class="btns dis-flex">
+      <button class="btn prim_btn" routerLink="/admin/categories">
+        Back to Categories
+      </button>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <form class="form" [formGroup]="categoryForm">
+      <div class="form_control">
+        <label for="name">Name</label>
+        <div class="form_control_input">
+            <input type="text" id="name" placeholder="Enter name" formControlName="name">
+        </div>
+      </div>
+      <div class="form_btn dis-flex">
+        <button class="btn sec_btn" *ngIf="!loading" (click)="updateCategory()">Update</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+      </div>
+    </form>
+  </section>

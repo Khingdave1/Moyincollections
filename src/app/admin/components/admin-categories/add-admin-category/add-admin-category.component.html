@@ -1,0 +1,49 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<section class="main_header dis-flex">
+    <div class="breadcrumb dis-flex">
+        <h3 class="clickable" routerLink="/admin/categories">Categories</h3>
+        <i class="bx bx-chevron-right icon"></i>
+        <p [title]="'title'">
+            Add category
+        </p>
+    </div>
+    <div class="btns dis-flex">
+      <button class="btn prim_btn" routerLink="/admin/categories">
+        Back to Categories
+      </button>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <form class="form" [formGroup]="categoryForm">
+      <div class="form_control">
+        <label for="name">Name</label>
+        <div class="form_control_input" [ngClass]="{
+          'is-invalid': isFormSubmitted && categoryForm.controls.name.errors
+        }">
+            <input type="text" id="name" placeholder="Enter name" formControlName="name">
+        </div>
+        <div
+          class="form_control_message"
+          *ngIf="isFormSubmitted && categoryForm.controls.name.errors"
+        >
+          <small *ngIf="categoryForm.controls.name.errors.required"
+            >Name is required</small
+          >
+        </div>
+      </div>
+      <div class="form_btn dis-flex">
+        <button class="btn sec_btn" *ngIf="!loading" (click)="saveAndNewCategory()">Save and New</button>
+        <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseCategory()">Save and Close</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+      </div>
+    </form>
+  </section>

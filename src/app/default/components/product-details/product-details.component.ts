@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit  {
   ngOnInit(): void {
 
     this.totalPrice = this.currentProduct?.price
-
+    
   }
 
 

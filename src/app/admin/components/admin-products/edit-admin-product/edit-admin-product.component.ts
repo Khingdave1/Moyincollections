@@ -7,11 +7,11 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
-  selector: 'app-edit-admin-products',
-  templateUrl: './edit-admin-products.component.html',
-  styleUrls: ['./edit-admin-products.component.scss']
+  selector: 'app-edit-admin-product',
+  templateUrl: './edit-admin-product.component.html',
+  styleUrls: ['./edit-admin-product.component.scss']
 })
-export class EditAdminProductsComponent {
+export class EditAdminProductComponent {
   loading: boolean = false;
   alertMessage: string = '';
   alertColor: string = '';
@@ -41,12 +41,9 @@ export class EditAdminProductsComponent {
     imageUrl: ['', [Validators.required]],
     name: ['', [Validators.required]],
     description: ['', [Validators.required]],
-    // dateAdded: [''],
-    // status: ['available'],
-    // categories: [this.categList],
     price: ['', [Validators.required]],
     discountPrice: ['', [Validators.required]],
-    // totalQuantity: ['']
+    totalQuantity: ['', [Validators.required]]
   });
   
 
@@ -79,12 +76,9 @@ export class EditAdminProductsComponent {
           imageUrl: [this.product.imageUrl, [Validators.required]],
           name: [this.product.name, [Validators.required]],
           description: [this.product.description, [Validators.required]],
-          // dateAdded: [''],
-          // status: ['available'],
-          // categories: [this.categList],
           price: [this.product.price, [Validators.required]],
           discountPrice: [this.product.discountPrice, [Validators.required]],
-          // totalQuantity: ['']
+          totalQuantity: [this.product.totalQuantity, [Validators.required]]
         });
 
         // Set category value(s)
@@ -108,7 +102,7 @@ export class EditAdminProductsComponent {
     // If doesn't exist add new category
     let exist = this.categList.includes(categ);
     if (!exist) {
-      this.categList.push(categ);
+      this.categList.push({ name: categ});
 
       this.isCateg = false
       // this.ngOnInit()
@@ -123,7 +117,8 @@ export class EditAdminProductsComponent {
 
   // Update product
   updateProduct() {
-    this.validateForm()
+    // Start loading
+    this.loading = true;
 
     let paylooad = {
       imageUrl: this.selectedFileName === undefined ? this.productForm.value.imageUrl : this.selectedFileName,
@@ -131,7 +126,9 @@ export class EditAdminProductsComponent {
       description: this.productForm.value.description,
       categories: this.categList,
       price: this.productForm.value.price,
-      discountPrice: this.productForm.value.discountPrice
+      discountPrice: this.productForm.value.discountPrice === null ? '' : this.productForm.value.discountPrice,
+      totalQuantity: this.productForm.value.totalQuantity,
+      dateUpdated: new Date().toISOString()
     }
     
     // post
@@ -150,22 +147,6 @@ export class EditAdminProductsComponent {
     })
     
     
-  }
-
-  // Validate form
-  validateForm() {
-    // Start loading
-    this.loading = true;
-
-    // Set submitted to true
-    this.isFormSubmitted = true;
-
-    // If Form is invalid
-    if (this.productForm.invalid) {
-      this.loading = false;
-
-      return;
-    }
   }
 
    // Upload File

@@ -1,6 +1,11 @@
 @import '../../../../assets/css/variables.scss';
 @import '../../../../assets/css/mixins.scss';
 
+.loading {
+    display: flex;
+    justify-content: center;
+}
+
 .products_list {
     @include card(250px);
     &_item {
@@ -41,6 +46,13 @@
                 }
             }
         }
+    }
+}
+
+.products {
+    &_more {
+        margin-top: $s-6;
+        text-align: center;
     }
 }
 

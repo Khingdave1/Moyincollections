@@ -1,13 +1,11 @@
 <div class="product-details">
     <div class="product-details_img">
-        <img [src]="currentProduct?.image" alt="image">
-        <!-- <img src="../../../../assets/img/wall-deco.jpg" alt=""> -->
+        <!-- <img [src]="currentProduct?.image" alt="image"> -->
+        <img src="../../../../assets/img/wall-deco.jpg" alt="">
     </div>
     <div class="product-details_content">
         <div class="product-details_content_categ">
-            <small class="product-details_content_categ_item">Curtain</small>
-            <small class="product-details_content_categ_item">Rug</small>
-            <small class="product-details_content_categ_item">Towel</small>
+            <small class="product-details_content_categ_item" *ngFor="let category of currentProduct?.categories">{{category.name}}</small>
         </div>
         <h3 class="product-details_content_title">{{currentProduct?.name}}</h3>
         <!-- <h3 class="product-details_content_title">currentProduct.name</h3> -->
