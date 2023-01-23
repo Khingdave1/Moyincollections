@@ -32,8 +32,8 @@ export class CartComponent implements OnInit {
     // this.items = JSON.parse(localStorage.getItem('cart') || '[]');
     // this.addSubTotal('data')
 
-    this.items = this.cartService.loadCart()
-    console.log(this.items);
+    let hi = this.cartService.loadCart()
+    console.log(hi);
     
   }
 
