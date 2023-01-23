@@ -145,7 +145,7 @@ export class AddAdminProductComponent {
       description: this.productForm.value.description,
       categories: this.categList,
       price: this.productForm.value.price,
-      discountedPrice: '',
+      discountPrice: 0,
       totalQuantity: this.productForm.value.totalQuantity,
       dateAdded: new Date().toISOString()
     }

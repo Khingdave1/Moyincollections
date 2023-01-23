@@ -1,3 +1,10 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
 <div class="product-details">
     <div class="product-details_img">
         <!-- <img [src]="currentProduct?.image" alt="image"> -->
@@ -23,7 +30,7 @@
             <h4 class="total-price">N{{totalPrice | number}}</h4>
         </div>
         <div class="product-details_content_btn">
-            <button class="btn sec_btn">Add to Cart</button>
+            <button class="btn sec_btn" (click)="addToCart()">Add to Cart</button>
         </div>
 
 

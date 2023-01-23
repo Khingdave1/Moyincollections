@@ -97,7 +97,7 @@
         &_close {
             position: absolute;
             top: .1rem;
-            right: -.1rem;
+            right: $s-1;
             .icon {
                 font-size: 26px;
                 color: $primary2;

@@ -238,3 +238,31 @@ small {
 }
 /* Section flex ends */
 
+.select-quan {
+  label {
+    display: inline-block;
+    margin-bottom: 0.2rem;
+  }
+  &_field {
+      justify-content: center;
+      gap: 0.3rem;
+      // padding: 0.5rem;
+      border: 2px solid $divider-color2;
+      padding: 0 .2rem;
+      font-size: 20px;
+      width: fit-content;
+      margin: auto;
+      input {
+          width: 50px;
+          border: none;
+          outline: none;
+          text-align: center;
+          padding: .2rem 0;
+      }
+      .icon {
+          cursor: pointer;
+      }
+
+  }
+}
+

@@ -13,7 +13,7 @@
             <div class="dis-flex products_list_item_bottom">
                 <p>N{{product.price | number}}</p>
     
-                <span class="products_list_item_bottom_icon" (click)="showProductDetails(product)">
+                <span class="products_list_item_bottom_icon" (click)="openProductDetails(product)">
                     <i class='bx bx-plus'></i>
                 </span>
             </div>
@@ -28,12 +28,12 @@
 </ng-container>
 
 
-<div class="modal" *ngIf="isModal">
-    <div class="modal_area" [class.show]="isModal">
+<div class="modal" *ngIf="productDetailsModal">
+    <div class="modal_area" [class.show]="productDetailsModal">
         <!-- appClickedOutside (clickedOutside)="hanldeChange()" -->
-        <app-product-details [currentProduct]="currentProduct"></app-product-details>
+        <app-product-details [currentProduct]="currentProduct" (productDetailsModal)="closeProductDetails()"></app-product-details>
 
-        <span class="modal_area_close clickable" (click)="isModal = false">
+        <span class="modal_area_close clickable" (click)="productDetailsModal = false">
             <i class='bx bx-x icon'></i>
         </span>
     </div>

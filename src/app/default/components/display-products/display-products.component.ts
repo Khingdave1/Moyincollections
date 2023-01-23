@@ -10,9 +10,9 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class DisplayProductsComponent implements OnInit {
 
   products: any
-  isModal: boolean = false
   currentProduct: any
   dataLoading: boolean = true;
+  productDetailsModal: boolean = false
 
   constructor(private productService: ProductService) {} 
 
@@ -29,17 +29,22 @@ export class DisplayProductsComponent implements OnInit {
     })
   }
 
-  // Show product details 
-  showProductDetails(product: any) {
-    this.isModal = true
+  // open product details 
+  openProductDetails(product: any) {
+    this.productDetailsModal = true
 
     this.currentProduct = product
+  }
+
+  // Close product details
+  closeProductDetails() {
+    this.productDetailsModal = false
   }
 
 
   hanldeChange() {
     console.log('Click Outside');
-    this.isModal = false
+    this.productDetailsModal = false
     
   }
   

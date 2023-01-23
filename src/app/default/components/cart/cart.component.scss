@@ -1,0 +1,66 @@
+@import '../../../../assets/css/variables.scss';
+@import '../../../../assets/css/mixins.scss';
+@import '../../../../assets/css/dash.scss';
+
+.cart {
+    &_header {
+        margin-bottom: $s-2;
+    }
+    &_body {
+        display: flex;
+        justify-content: space-between;
+        gap: $s-2;
+        @media only screen and (max-width: 885px) {
+            flex-direction: column;
+        }
+        &_table {
+            flex-basis: 65%;
+        }
+        &_checkout {
+            flex-basis: 30%;
+            padding: 1rem;
+            background-color: $divider-color1;
+            .title {
+                margin-bottom: $s-2;
+            }
+            .grand-price {
+                margin-top: $s-1;
+            }
+            .form {
+                margin-top: 2rem;
+                padding-top: 1rem;
+                border-top: 2px solid #fff;
+                @include form();
+            }
+        }
+    }
+}
+
+.table-container {
+    table {
+        tr {
+            &.table-body {
+                td {
+                    border-top: none; 
+                    border-bottom: 1px solid $divider-color2;
+                    &:first-child {
+                        border-radius: 0;
+                        border-left: none;
+                    }
+                    &:last-child {
+                        border-radius: 0;
+                        border-right: none;
+                    }
+                    .qauntity {}
+                }
+                &:hover {
+                    td {
+                        &:first-child {
+                            border-left: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

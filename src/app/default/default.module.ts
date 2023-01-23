@@ -15,6 +15,7 @@ import { DisplayProductsComponent } from './components/display-products/display-
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ClickedOutsideDirective } from '../shared/directives/clicked-outside.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeProductsComponent,
     DisplayProductsComponent,
     ProductDetailsComponent,
-    ClickedOutsideDirective
+    ClickedOutsideDirective,
+    CartComponent
   ],
   imports: [
     CommonModule,
