@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-default-header',
@@ -12,8 +12,20 @@ export class DefaultHeaderComponent implements AfterViewInit {
 
   isHamClick: boolean = false
 
-  constructor(private renderer: Renderer2) { }
+  windowScrolled: boolean;
 
+  constructor(private renderer: Renderer2) { }
+  
+  // When user scroll 300 away from the top of the document
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      this.windowScrolled = true;
+    }
+    else {
+      this.windowScrolled = false;
+    }
+  }
   ngAfterViewInit(): void {
     
     // Click Outside to close element
