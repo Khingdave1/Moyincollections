@@ -6,8 +6,8 @@
         <div class="products_list_item" *ngFor="let product of products">
             <span class="sold-out">Sold out</span>
             <a [href]="product.image">
-                <!-- <img [src]="product.image" alt="image" class="products_list_item_img" > -->
-                <img src="../../../../assets/img/wall-deco.jpg" alt="image" class="products_list_item_img" >
+                <img [src]="product.imageUrl" alt="image" class="products_list_item_img" >
+                <!-- <img src="../../../../assets/img/wall-deco.jpg" alt="image" class="products_list_item_img" > -->
             </a>
             <h3 class="products_list_item_title uc">{{product.name}}</h3>
             

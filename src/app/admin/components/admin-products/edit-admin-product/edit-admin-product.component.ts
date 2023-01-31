@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/shared/interfaces/category';
-import { IProduct } from 'src/app/shared/interfaces/product';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { Storage, ref, uploadBytesResumable, getDownloadURL} from '@angular/fire/storage'
 
 @Component({
   selector: 'app-edit-admin-product',
@@ -20,6 +20,7 @@ export class EditAdminProductComponent {
   isFormSubmitted: boolean = false;
   selectedFile: any;
   selectedFileName: string;
+  selectedFileUrl: string;
   file: File;
   isCateg: any;
   isCategList: boolean = false
@@ -33,7 +34,8 @@ export class EditAdminProductComponent {
     private categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private storage: Storage
   ) {}
 
   // Product form
@@ -121,7 +123,7 @@ export class EditAdminProductComponent {
     this.loading = true;
 
     let paylooad = {
-      imageUrl: this.selectedFileName === undefined ? this.productForm.value.imageUrl : this.selectedFileName,
+      imageUrl: this.selectedFileUrl === undefined ? this.productForm.value.imageUrl : this.selectedFileUrl,
       name: this.productForm.value.name,
       description: this.productForm.value.description,
       categories: this.categList,
@@ -151,34 +153,35 @@ export class EditAdminProductComponent {
 
    // Upload File
    uploadFile(event: any) {
-    // for (let index = 0; index < event.length; index++) {
-    //   const element = event[index];
-    //   this.files.push(element.name)
-    // }
 
     this.file = event.target.files[0];
     // Set file name
     this.selectedFileName = this.file.name;
-    // this.ngOnInit()
 
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    const storageRef = ref(this.storage, `images/${this.selectedFileName}`)
+    const uploadTask = uploadBytesResumable(storageRef, this.file)
 
-    // Preview File Selected
-    // this.selectedFile = event[0];
-
-    // if (this.selectedFile) {
-    //   let reader = new FileReader();
-    //   reader.readAsDataURL(this.selectedFile);
-    //   // reader.onload = (e: any) => {
-    //   //   this.previewImage = e.target.result;
-    //   //   if (this.previewImage !== '') {
-    //   //     this.showPreviewImage = true;
-    //   //   } else {
-    //   //     this.showPreviewImage = false;
-    //   //   }
-    //   // };
-    // }
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        console.log('Upload is ' + progress + '% done');
+        this.showAlert('Image uploaded', 'success')
+      },
+      (error) => {
+        console.log(error.message);
+        
+      },
+      () => {
+        // Upload completed successfully, now we can get the download URL
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+          this.selectedFileUrl = downloadURL
+        });
+      }
+    )
   }
-
 
   // Show alert
   showAlert(message: string, color: string) {
