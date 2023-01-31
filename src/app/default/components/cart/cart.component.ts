@@ -11,89 +11,109 @@ export class CartComponent implements OnInit {
 
   checkoutForm: any = FormGroup;
   loading: boolean = false;
-  items: any;
+  isFormSubmitted: boolean = false;
+  products: any;
   alertMessage: string = '';
   alertColor: string = '';
   isAlert: boolean = false;
-  quanTotal: number;
-  grandTotal: number;
   subTotal: number;
+  grandTotal: number;
   
   constructor(private formBuilder: FormBuilder, private cartService: CartService) {}
 
  ngOnInit(): void {
     // category form
     this.checkoutForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      fullname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
     });
 
-    // Get cart items from local storage
-    // this.items = JSON.parse(localStorage.getItem('cart') || '[]');
-    // this.addSubTotal('data')
-
-    let hi = this.cartService.loadCart()
-    console.log(hi);
-    
+    // Get cart products from local storage
+    this.products = this.cartService.loadCart()
+    this.getGrandTotal()
   }
 
   // Find Sum
-  addSubTotal(data: any) {
+  getGrandTotal() {
     // this.value = data;
-    this.grandTotal = this.items.reduce((sum: any, prod: any) => sum += prod.subTotal, 0)
-    console.log(this.grandTotal);
+    this.grandTotal = this.products.reduce((sum: any, product: any) => sum += product.subTotal, 0)
     
     return this.grandTotal
   }
 
 
    // Increase Product Quantity
-   increment() {
-    this.quanTotal += 1;
+   increment(item: any, index: any) {
+    let qty = item.quantity
+    let atm = item.price
 
-    // this.totalPrice = this.currentProduct?.price * this.quanTotal
-    // return this.totalPrice
+    qty += 1;
+    
+    item.subTotal = qty * atm
+    item.quantity = qty
+    
+    this.cartService.saveCart()
+    this.getGrandTotal()
   }
-
+  
   // Decrease Product Quantity
-  decrement() {
-    if(this.quanTotal > 1) {
-      this.quanTotal -= 1;
+  decrement(item: any, index: any) {
+    let qty = item.quantity
+    let atm = item.price
+    
+    if(qty > 1) {
+      qty -= 1;
     }
+    
+    item.subTotal = qty * atm
+    item.quantity = qty
 
-    // this.totalPrice = this.currentProduct?.price * this.quanTotal
-    // return this.totalPrice
+    this.cartService.saveCart()
+    this.getGrandTotal()
   }
 
-  changeSunTotal(item: any, index: any) {
+  // Change Sub Total
+  changeSubTotal(item: any, index: any) {
     const qty = item.quantity
     const atm = item.price
 
-    this.subTotal = qty * atm
+    item.subTotal = qty * atm
 
-     
+    this.cartService.saveCart()
+    this.getGrandTotal()
   }
 
-  // input quant value
-  // inputQuanValue() {
-  //   this.totalPrice = this.currentProduct?.price * this.quanTotal
-  //   return this.totalPrice
-  // }
-
   // Remove item from localstorage
-  removeItemFromLocalStorage(index: any): void {
-    let allData = JSON.parse(localStorage.getItem('cart') || '[]');
-
-    allData.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(allData));
+  removeItemFromLocalStorage(product: any): void {
+    this.cartService.removeProduct(product)
+    this.getGrandTotal()
     // Show alert
     this.showAlert('Item removed from cart', 'success')
+  }
 
-    this.items = JSON.parse(localStorage.getItem('cart') || '[]');
+  // Checkout 
+  checkout() {
+    // Start loading
+    this.loading = true;
 
-    this.addSubTotal('')
+    // Set submitted to true
+    this.isFormSubmitted = true;
 
-    // this.ngOnInit()
+    // If Form is invalid
+    if (this.checkoutForm.invalid) {
+      this.loading = false;
+
+      return;
+    }
+
+    let payload = {
+      fullname: this.checkoutForm.value.fullname,
+      email: this.checkoutForm.value.email,
+      grandTotal: this.grandTotal
+    }
+
+    console.log(payload);
+    
   }
 
   // Show alert

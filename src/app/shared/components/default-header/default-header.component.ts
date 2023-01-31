@@ -19,7 +19,7 @@ export class DefaultHeaderComponent implements AfterViewInit {
   // When user scroll 300 away from the top of the document
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       this.windowScrolled = true;
     }
     else {

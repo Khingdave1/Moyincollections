@@ -13,7 +13,7 @@
 
         <div class="cart_body">
             <div class="cart_body_table table-container">
-                <ng-container *ngIf="items.length > 0">
+                <ng-container *ngIf="products.length > 0">
 
                 </ng-container>
                 <table>
@@ -21,35 +21,35 @@
                         <th>Product</th>
                         <th>Price (N)</th>
                         <th>Quantity</th>
-                        <th>Total</th>
+                        <th>Sub Total</th>
                         <th></th>
                     </tr>
-                    <tr class="table-body" *ngFor="let item of items; let i = index">
+                    <tr class="table-body" *ngFor="let product of products; let i = index">
                         <td class="name">
-                        <p class="description">{{item.name}}</p>
+                        <p class="description">{{product.name}}</p>
                         </td>
-                        <td>{{item.price}}</td>
+                        <td>{{product.price}}</td>
                         <td class="qauntity">
                             <div class="select-quan_field dis-flex">
-                                <i class='bx bx-minus icon' (click)="decrement()"></i>
-                                <input type="text" id="quantity" [(ngModel)]="item.quantity" [ngModelOptions]="{standalone: true}" (change)="changeSunTotal(item, i)">
+                                <i class='bx bx-minus icon' (click)="decrement(product, i)"></i>
+                                <input type="number" id="quantity" [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" (change)="changeSubTotal(product, i)">
                                 <!-- (input)="inputQuanValue()" -->
-                                <i class='bx bx-plus icon' (click)="increment()"></i>
+                                <i class='bx bx-plus icon' (click)="increment(product, i)"></i>
                             </div>
                         </td>
-                        <td>{{item.subTotal}}</td>
+                        <td>{{product.subTotal}}</td>
                         <td class="actions">
                             <span class="actions_item rmove">
                                 <i
                                     class="bx bx-x icon text-danger"
-                                    (click)="removeItemFromLocalStorage('product')"
+                                    (click)="removeItemFromLocalStorage(product)"
                                     title="Remove"
                                 ></i>
                             </span>
                         </td>
                     </tr>
                 </table>
-                <ng-container *ngIf="items.length === 0">
+                <ng-container *ngIf="products.length === 0">
                     <div class="empty-list">
                         <h3>Cart is empty!</h3>
                         <span class="empty-list_instruct dis-flex">
@@ -63,21 +63,44 @@
             </div>
             <aside class="cart_body_checkout">
                 <h3 class="title">Order Summary</h3>
-                <p>Total items: {{ items?.length }}</p>
+                <p>Total products: {{ products?.length }}</p>
                 <h5 class="grand-price">Grand total price: N{{grandTotal | number}}</h5>
                 <form class="form" [formGroup]="checkoutForm">
                     <div class="form_control">
-                        <div class="form_control_input">
-                            <input type="text" id="name" placeholder="Enter name" formControlName="name">
+                        <div class="form_control_input" [ngClass]="{
+                            'is-invalid': isFormSubmitted && checkoutForm.controls.fullname.errors
+                          }">
+                            <input type="text" id="fullname" placeholder="Enter fullname" formControlName="fullname">
+                        </div>
+                        <div
+                            class="form_control_message"
+                            *ngIf="isFormSubmitted && checkoutForm.controls.fullname.errors"
+                        >
+                            <small *ngIf="checkoutForm.controls.fullname.errors.required"
+                            >Fullname is required</small
+                            >
                         </div>
                     </div>
-                    <div class="form_control">
+                    <div class="form_control" [ngClass]="{
+                        'is-invalid': isFormSubmitted && checkoutForm.controls.email.errors
+                      }">
                         <div class="form_control_input">
                             <input type="email" id="email" placeholder="Enter email" formControlName="email">
                         </div>
+                        <div
+                            class="form_control_message"
+                            *ngIf="isFormSubmitted && checkoutForm.controls.email.errors"
+                        >
+                            <small *ngIf="checkoutForm.controls.email.errors.required"
+                            >Email is required</small
+                            >
+                            <small *ngIf="checkoutForm.controls.email.errors.email"
+                            >Email is invalid</small
+                            >
+                        </div>
                     </div>
                     <div class="form_btn dis-flex">
-                        <button class="btn sec_btn" *ngIf="!loading">Checkout</button>
+                        <button class="btn sec_btn" *ngIf="!loading" (click)="checkout()">Checkout</button>
                         <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
                         <app-loader></app-loader>
                         </button>

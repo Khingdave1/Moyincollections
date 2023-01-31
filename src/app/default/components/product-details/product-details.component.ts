@@ -19,9 +19,7 @@ export class ProductDetailsComponent implements OnInit  {
   constructor(private cartService: CartService) {}
   
   ngOnInit(): void {
-
     this.totalPrice = this.currentProduct?.price
-    
   }
 
    // Close Modal
@@ -54,7 +52,7 @@ export class ProductDetailsComponent implements OnInit  {
   }
 
   // Add item to localstorage
-  addItemToLocalStorage(data: any): void {
+  addToCart() {
     let payload = {
       id: this.currentProduct.id,
       imageUrl: this.currentProduct.imageUrl,
@@ -63,13 +61,10 @@ export class ProductDetailsComponent implements OnInit  {
       quantity: this.quanTotal,
       subTotal: this.totalPrice
     }
-    
-    let allData = JSON.parse(localStorage.getItem('cart') || '[]');
+    let allData = this.cartService.loadCart()
     let exist = allData.some((obj: any) => obj.id === payload.id);
     if (!exist) {
-      allData.push(payload);
-      localStorage.setItem('cart', JSON.stringify(allData));
-
+      this.cartService.addToCart(payload);
       // Show alert
       this.showAlert('Item added to cart', 'success')
 
@@ -80,15 +75,6 @@ export class ProductDetailsComponent implements OnInit  {
 
     } else {
       this.showAlert('Item already exist in cart', 'warning')
-    }
-  }
-
-  addToCart() {
-    if (!this.cartService.productInCart(this.currentProduct)) {
-      // this.currentProduct;
-      this.cartService.addToCart(this.currentProduct);
-      // this.products = [...this.cartService.getProduct()];
-      // this.subTotal = this.currentProduct.price;
     }
     
   }
