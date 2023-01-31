@@ -33,7 +33,7 @@
                 <li title="Search"><i class='bx bx-search-alt-2'></i></li>
                 <li title="Cart" class="cart" routerLink="/cart">
                     <i class='bx bx-shopping-bag'></i>
-                    <span class="counter">0</span>
+                    <span class="counter">{{products?.length}}</span>
                 </li>
                 <li class="hamburger" (click)="toggleMenu()" #menuBtn>
                     <i class='bx bx-menu icon' *ngIf="isHamClick === false"></i>

@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-default-header',
   templateUrl: './default-header.component.html',
   styleUrls: ['./default-header.component.scss']
 })
-export class DefaultHeaderComponent implements AfterViewInit {
+export class DefaultHeaderComponent implements OnInit {
 
   @ViewChild('menuArea') menuArea: ElementRef;
   @ViewChild('menuBtn') menuBtn: ElementRef;
@@ -13,8 +14,9 @@ export class DefaultHeaderComponent implements AfterViewInit {
   isHamClick: boolean = false
 
   windowScrolled: boolean;
+  products: any;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private cartService: CartService) { }
   
   // When user scroll 300 away from the top of the document
   @HostListener("window:scroll", [])
@@ -26,7 +28,7 @@ export class DefaultHeaderComponent implements AfterViewInit {
       this.windowScrolled = false;
     }
   }
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     
     // Click Outside to close element
     // this.renderer.listen('window', 'click', (e: Event) => {
@@ -38,8 +40,13 @@ export class DefaultHeaderComponent implements AfterViewInit {
     //     this.isHamClick = false;
     //   }
     // });
+
+    // Get products from cart
+    this.products = this.cartService.loadCart()
+
   }
 
+  // Toggle Menu
   toggleMenu() {
     this.isHamClick = !this.isHamClick
   }

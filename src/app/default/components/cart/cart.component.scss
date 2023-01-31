@@ -9,6 +9,7 @@
     &_body {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
         gap: $s-2;
         @media only screen and (max-width: 885px) {
             flex-direction: column;
@@ -51,7 +52,13 @@
                         border-radius: 0;
                         border-right: none;
                     }
-                    .qauntity {}
+                    &.title {
+                        img {
+                            margin-top: $s-2;
+                            width: 150px;
+                            height: auto;
+                        }
+                    }
                 }
                 &:hover {
                     td {

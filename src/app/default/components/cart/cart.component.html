@@ -25,19 +25,22 @@
                         <th></th>
                     </tr>
                     <tr class="table-body" *ngFor="let product of products; let i = index">
-                        <td class="name">
-                        <p class="description">{{product.name}}</p>
+                        <td class="title">
+                            <p class="">
+                                {{product?.name}}
+                            </p>
+                            <!-- <img [src]="product?.image" alt="image"> -->
+                            <img src="../../../../assets/img/throw-pillows.jpg" alt="">
                         </td>
-                        <td>{{product.price}}</td>
+                        <td>{{product?.price}}</td>
                         <td class="qauntity">
                             <div class="select-quan_field dis-flex">
                                 <i class='bx bx-minus icon' (click)="decrement(product, i)"></i>
                                 <input type="number" id="quantity" [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" (change)="changeSubTotal(product, i)">
-                                <!-- (input)="inputQuanValue()" -->
                                 <i class='bx bx-plus icon' (click)="increment(product, i)"></i>
                             </div>
                         </td>
-                        <td>{{product.subTotal}}</td>
+                        <td>{{product?.subTotal}}</td>
                         <td class="actions">
                             <span class="actions_item rmove">
                                 <i
@@ -55,7 +58,7 @@
                         <span class="empty-list_instruct dis-flex">
                         <i class="bx bx-info-circle icon"></i>
                         <p class="hover-1 clickable" routerLink="/products">
-                            Click here to add <strong>product.</strong>
+                            Click here to add <strong>product?.</strong>
                         </p>
                         </span>
                     </div>
