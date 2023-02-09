@@ -16,15 +16,14 @@
                 <li class="nav-list_item" routerLink="/" (click)="isHamClick = false">
                     Home
                 </li>
-                <li class="nav-list_item" (click)="isHamClick = false">
+                <li class="nav-list_item" (click)="navigateToAbout()">
                     About
                 </li>
                 <li class="nav-list_item" routerLink="/products" (click)="isHamClick = false">
                     Products
                 </li>
-                <li class="nav-list_item" (click)="isHamClick = false">
-                    <a href="#contact">Contact</a>
-                    
+                <li class="nav-list_item" (click)="navigateToContact()">
+                   Contact
                 </li>
             </ul>
         </nav>

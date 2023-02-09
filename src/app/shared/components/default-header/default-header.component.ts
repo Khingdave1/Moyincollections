@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter, timeout, delay } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class DefaultHeaderComponent implements OnInit {
   windowScrolled: boolean;
   products: any;
 
-  constructor(private renderer: Renderer2, private cartService: CartService) { }
+  constructor(private renderer: Renderer2, private cartService: CartService, private router: Router) { }
   
   // When user scroll 300 away from the top of the document
   @HostListener("window:scroll", [])
@@ -51,4 +53,49 @@ export class DefaultHeaderComponent implements OnInit {
     this.isHamClick = !this.isHamClick
   }
 
+  // Navigate to about
+  navigateToAbout() {
+    this.router.navigate(['/'], { fragment: 'about' });
+
+    this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd),
+      delay(0),
+      timeout(1000)
+    )
+    .subscribe(() => {
+      const fragment = this.router.parseUrl(this.router.url).fragment;
+      if (fragment) {
+        const element = document.querySelector(`#${fragment}`);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }
+    });
+
+    this.isHamClick = false
+  }
+
+  // Navigate to about
+  navigateToContact() {
+    this.router.navigate(['/'], { fragment: 'contact' });
+
+    this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd),
+      delay(0),
+      timeout(1000)
+    )
+    .subscribe(() => {
+      const fragment = this.router.parseUrl(this.router.url).fragment;
+      if (fragment) {
+        const element = document.querySelector(`#${fragment}`);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }
+    });
+
+    this.isHamClick = false
+  }
 }
