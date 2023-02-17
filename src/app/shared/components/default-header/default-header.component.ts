@@ -92,6 +92,7 @@ export class DefaultHeaderComponent implements OnInit {
         const element = document.querySelector(`#${fragment}`);
         if (element) {
           element.scrollIntoView();
+          // this.info.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
         }
       }
     });

@@ -82,7 +82,6 @@ export class AddAdminProductComponent {
       this.isCateg = false
       // this.ngOnInit()
     }
-
   }
   // Remove Category
   removeCateg(index: any) {
